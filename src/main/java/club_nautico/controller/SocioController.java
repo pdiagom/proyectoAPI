@@ -1,6 +1,6 @@
-package com.eviden.pablo.api.clubNautico.Club.Nautico.controller;
+package club_nautico.controller;
 
-import com.eviden.pablo.api.clubNautico.Club.Nautico.entity.Socio;
+import club_nautico.entity.Socio;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;

@@ -1,7 +1,7 @@
-package com.eviden.pablo.api.clubNautico.Club.Nautico.controller;
+package club_nautico.controller;
 
-import com.eviden.pablo.api.clubNautico.Club.Nautico.entity.Barco;
-import com.eviden.pablo.api.clubNautico.Club.Nautico.service.BarcoService;
+import club_nautico.entity.Barco;
+import club_nautico.service.BarcoService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RestController;

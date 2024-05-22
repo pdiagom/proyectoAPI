@@ -1,4 +1,4 @@
-package com.eviden.pablo.api.clubNautico.Club.Nautico;
+package club_nautico;
 
 import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.context.SpringBootTest;

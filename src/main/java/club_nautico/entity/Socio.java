@@ -1,4 +1,4 @@
-package com.eviden.pablo.api.clubNautico.Club.Nautico.entity;
+package club_nautico.entity;
 
 import jakarta.persistence.Id;
 import lombok.AllArgsConstructor;

@@ -1,7 +1,7 @@
-package com.eviden.pablo.api.clubNautico.Club.Nautico.service;
+package club_nautico.service;
 
-import com.eviden.pablo.api.clubNautico.Club.Nautico.entity.Barco;
-import com.eviden.pablo.api.clubNautico.Club.Nautico.repository.BarcoRepository;
+import club_nautico.entity.Barco;
+import club_nautico.repository.BarcoRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import java.util.List;

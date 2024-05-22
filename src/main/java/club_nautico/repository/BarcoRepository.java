@@ -1,6 +1,6 @@
-package com.eviden.pablo.api.clubNautico.Club.Nautico.repository;
+package club_nautico.repository;
 
-import com.eviden.pablo.api.clubNautico.Club.Nautico.entity.Barco;
+import club_nautico.entity.Barco;
 import org.springframework.data.jpa.repository.JpaRepository;
 
 public interface BarcoRepository extends JpaRepository<Barco,Long> {

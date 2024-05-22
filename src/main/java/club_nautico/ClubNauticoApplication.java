@@ -1,4 +1,4 @@
-package com.eviden.pablo.api.clubNautico.Club.Nautico;
+package club_nautico;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
