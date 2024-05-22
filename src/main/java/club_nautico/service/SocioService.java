@@ -8,5 +8,5 @@ import java.util.List;
 @Service
 public interface SocioService {
     List<Socio> findAllSocios();
-//Hola
+
 }
