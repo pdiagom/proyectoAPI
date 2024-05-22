@@ -15,6 +15,7 @@ public class BarcoController {
 
     @GetMapping("/findAllBarcos")
     public List<Barco> findAllBarcos(){
+
         return barcoService.findAllBarcos();
     }
 }
