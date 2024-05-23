@@ -9,6 +9,6 @@ import java.util.List;
 public interface SalidaService {
     List<Salida> findAllSalidas();
     Salida saveSalida(Salida salida);
-    Salida updateLocal(Integer id,Salida salida);
+    Salida updateSalida(Integer id,Salida salida);
     void deleteSalida(Integer id);
 }

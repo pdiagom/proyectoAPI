@@ -13,9 +13,7 @@ public class SalidaServiceImpl implements SalidaService{
     SalidaRepository salidaRepository;
 
     @Override
-    public List<Salida> findAllSalidas() {
-        return List.of();
-    }
+    public List<Salida> findAllSalidas() {return salidaRepository.findAll();}
 
     @Override
     public Salida saveSalida(Salida salida) {
@@ -23,21 +21,31 @@ public class SalidaServiceImpl implements SalidaService{
     }
 
     @Override
-    public Salida updateLocal(Integer id, Salida salida) {
+    public Salida updateSalida(Integer id, Salida salida) {
 
-        Salida salidaDb = salidaRepository.findById(id).get();
+        Salida salidaDatabase = salidaRepository.findById(id).get();
 
         if(Objects.nonNull(salida.getDestino()) && !"".equalsIgnoreCase(salida.getDestino())){
-            salidaDb.setDestino(salida.getDestino());
+            salidaDatabase.setDestino(salida.getDestino());
         }
         if(Objects.nonNull(salida.getPatron_nombre()) && !"".equalsIgnoreCase(salida.getPatron_nombre())){
-            salidaDb.setPatron_nombre(salida.getPatron_nombre());
+            salidaDatabase.setPatron_nombre(salida.getPatron_nombre());
         }
-        return null;
+        if(Objects.nonNull(salida.getPatron_apellido()) && !"".equalsIgnoreCase(salida.getPatron_apellido())){
+            salidaDatabase.setPatron_apellido(salida.getPatron_apellido());
+        }
+        if(Objects.nonNull(salida.getPatron_dni()) && !"".equalsIgnoreCase(salida.getPatron_dni())){
+            salidaDatabase.setPatron_dni(salida.getPatron_dni());
+        }
+        if(Objects.nonNull(salida.getBarco_matricula()) && !"".equalsIgnoreCase(salida.getBarco_matricula())){
+            salidaDatabase.setBarco_matricula(salida.getBarco_matricula());
+        }
+
+        return salidaRepository.save(salidaDatabase);
     }
 
     @Override
     public void deleteSalida(Integer id) {
-
+        salidaRepository.deleteById(id);
     }
 }

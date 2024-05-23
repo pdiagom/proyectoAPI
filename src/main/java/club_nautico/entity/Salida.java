@@ -5,9 +5,12 @@ import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
-import org.springframework.beans.factory.annotation.Autowired;
+
 
 import java.sql.Timestamp;
+import java.time.OffsetDateTime;
+import java.time.ZoneOffset;
+
 
 @Entity
 @Table(name="salida")
@@ -19,29 +22,13 @@ public class Salida {
 
     @Id
     private int id;
-    private Timestamp fecha_hora;
+    private OffsetDateTime fecha_hora = OffsetDateTime.now(ZoneOffset.UTC);
     private String destino;
     private String patron_nombre;
     private String patron_apellido;
     private String patron_dni;
     private String barco_matricula;
-    private String socio_dni;
 
-    public int getId() {
-        return id;
-    }
-
-    public void setId(int id) {
-        this.id = id;
-    }
-
-    public Timestamp getFecha_hora() {
-        return fecha_hora;
-    }
-
-    public void setFecha_hora(Timestamp fecha_hora) {
-        this.fecha_hora = fecha_hora;
-    }
 
     public String getDestino() {
         return destino;
@@ -83,11 +70,4 @@ public class Salida {
         this.barco_matricula = barco_matricula;
     }
 
-    public String getSocio_dni() {
-        return socio_dni;
-    }
-
-    public void setSocio_dni(String socio_dni) {
-        this.socio_dni = socio_dni;
-    }
 }
