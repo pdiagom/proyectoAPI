@@ -8,6 +8,7 @@ import org.springframework.web.bind.annotation.*;
 import java.util.List;
 
 @RestController
+@RequestMapping("/barco")
 public class BarcoController {
     @Autowired
     BarcoService barcoService;
@@ -24,5 +25,11 @@ public class BarcoController {
     @PutMapping("/updateBarco/{matricula}")
     public Barco updateBarco(@PathVariable("matricula") String matricula, @RequestBody Barco barco){
         return barcoService.updateBarco(matricula,barco);
+    }
+
+    @DeleteMapping("/deleteBarco/{matricula}")
+    public String deleteBarco(@PathVariable("matricula")String matricula ){
+    barcoService.deleteBarco(matricula);
+    return "El barco se ha eliminado correctamente";
     }
 }
