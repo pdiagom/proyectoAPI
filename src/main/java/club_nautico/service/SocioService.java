@@ -8,5 +8,8 @@ import java.util.List;
 @Service
 public interface SocioService {
     List<Socio> findAllSocios();
+    Socio saveSocio(Socio socio);
+    Socio updateSocio(String dni, Socio socio);
+    void deleteSocio(String id);
 
 }

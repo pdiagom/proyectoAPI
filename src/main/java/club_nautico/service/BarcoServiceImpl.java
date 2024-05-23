@@ -20,6 +20,7 @@ public class BarcoServiceImpl implements BarcoService{
 
     @Override
     public Barco saveBarco(Barco barco) {
+<<<<<<< HEAD
         return barcoRepository.save(barco);
     }
 
@@ -48,5 +49,8 @@ public class BarcoServiceImpl implements BarcoService{
     @Override
     public void deleteBarco(String matricula) {
         barcoRepository.deleteById(matricula);
+=======
+        return null;
+>>>>>>> 759513653776370efac49d2beeadee4213d05d20
     }
 }

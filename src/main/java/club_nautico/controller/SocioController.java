@@ -4,13 +4,13 @@ package club_nautico.controller;
 import club_nautico.entity.Socio;
 import club_nautico.service.SocioService;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
 
 @RestController
+@RequestMapping("/socio")
 public class SocioController {
     @Autowired
     private SocioService socioService;
@@ -24,5 +24,11 @@ public class SocioController {
 
         return socioService.findAllSocios();
     }
+
+    @PostMapping("/saveSocios")
+    public Socio saveSocio(@RequestBody Socio socio){
+        return socioService.saveSocio(socio);
+    }
+
 
 }
