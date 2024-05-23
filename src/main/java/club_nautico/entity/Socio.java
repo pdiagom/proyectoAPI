@@ -16,7 +16,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 public class Socio {
     @Id
     private String dni;
-    private String name;
-    private String lastname;
+    private String nombre;
+    private String apellido;
 
 }

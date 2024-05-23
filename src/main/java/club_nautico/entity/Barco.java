@@ -17,8 +17,8 @@ public class Barco {
 
     @Id
     private String matricula;
-    private double cuota;
-    private String amarre;
     private String nombre;
-    private int socioId;
+    private String amarre;
+    private double cuota;
+    private int socio_dni;
 }
