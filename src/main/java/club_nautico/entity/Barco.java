@@ -21,3 +21,4 @@ public class Barco {
     private double cuota;
     private String socio_dni;
 }
+
