@@ -16,4 +16,9 @@ public class BarcoServiceImpl implements BarcoService{
 
         return barcoRepository.findAll();
     }
+
+    @Override
+    public Barco saveBarco(Barco barco) {
+        return null;
+    }
 }
