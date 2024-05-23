@@ -7,18 +7,23 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
 
+import java.sql.Timestamp;
+
 @Entity
-@Table(name="barco")
+@Table(name="salida")
 @Data               //Todos los getters y setters
 @AllArgsConstructor //Todos los constructores de salida
 @NoArgsConstructor  //El constructor sin parametros
 @Builder
-public class Barco {
+public class Salida {
 
     @Id
-    private String matricula;
-    private String nombre;
-    private String amarre;
-    private double cuota;
+    private int id;
+    private Timestamp fecha_hora;
+    private String destino;
+    private String patron_nombre;
+    private String patron_apellido;
+    private String patron_dni;
+    private String barco_matricula;
     private String socio_dni;
 }

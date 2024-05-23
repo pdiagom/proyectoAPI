@@ -10,9 +10,9 @@ import org.springframework.beans.factory.annotation.Autowired;
 
 @Entity
 @Table(name="socio")
-@Data
-@AllArgsConstructor
-@NoArgsConstructor
+@Data               //Todos los getters y setters
+@AllArgsConstructor //Todos los constructores de salida
+@NoArgsConstructor  //El constructor sin parametros
 public class Socio {
     @Id
     private String dni;
