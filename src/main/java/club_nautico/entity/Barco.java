@@ -20,5 +20,5 @@ public class Barco {
     private String nombre;
     private String amarre;
     private double cuota;
-    private int socio_dni;
+    private String socio_dni;
 }
