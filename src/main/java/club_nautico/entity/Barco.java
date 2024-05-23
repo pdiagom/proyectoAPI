@@ -61,3 +61,4 @@ public class Barco {
         this.socio_dni = socio_dni;
     }
 }
+
