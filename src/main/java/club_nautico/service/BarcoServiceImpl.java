@@ -26,10 +26,6 @@ public class BarcoServiceImpl implements BarcoService{
     @Override
     public Barco updateBarco(String matricula, Barco barco) {
         Barco b=barcoRepository.findById(matricula).get();
-        if(Objects.nonNull(barco.getMatricula())&& !"".equalsIgnoreCase(barco.getMatricula())){
-            b.setMatricula(barco.getMatricula());
-
-        }
         if(Objects.nonNull(barco.getNombre())&& !"".equalsIgnoreCase(barco.getNombre())){
             b.setNombre(barco.getNombre());
         }

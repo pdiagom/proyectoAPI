@@ -3,10 +3,7 @@ package club_nautico.controller;
 import club_nautico.entity.Barco;
 import club_nautico.service.BarcoService;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
@@ -24,5 +21,8 @@ public class BarcoController {
     public Barco saveLocal(@RequestBody Barco barco){
         return barcoService.saveBarco(barco);
     }
-
+    @PutMapping("/updateBarco/{matricula}")
+    public Barco updateBarco(@PathVariable("matricula") String matricula, @RequestBody Barco barco){
+        return barcoService.updateBarco(matricula,barco);
+    }
 }
