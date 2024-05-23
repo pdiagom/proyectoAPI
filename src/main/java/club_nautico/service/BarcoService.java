@@ -8,4 +8,5 @@ import java.util.List;
 @Service
 public interface BarcoService {
     List<Barco> findAllBarcos();
+    Barco saveBarco(Barco barco);
 }
