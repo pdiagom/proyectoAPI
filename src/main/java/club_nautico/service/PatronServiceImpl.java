@@ -41,5 +41,6 @@ public class PatronServiceImpl implements PatronService{
     @Override
     public void deletePatron(int id) {
         patronRepository.deleteById(id);
+
     }
 }
