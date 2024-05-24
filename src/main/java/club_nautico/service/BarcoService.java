@@ -10,5 +10,5 @@ public interface BarcoService {
     List<Barco> findAllBarcos();
     Barco saveBarco(Barco barco);
     Barco updateBarco(String matricula, Barco barco);
-    void deleteBarco(String matricula);
+    String deleteBarco(String matricula);
 }

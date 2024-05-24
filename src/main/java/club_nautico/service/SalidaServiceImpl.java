@@ -42,7 +42,8 @@ public class SalidaServiceImpl implements SalidaService{
     }
 
     @Override
-    public void deleteSalida(Integer id) {
+    public String deleteSalida(Integer id) {
         salidaRepository.deleteById(id);
+        return "Salida borrada correctamente";
     }
 }

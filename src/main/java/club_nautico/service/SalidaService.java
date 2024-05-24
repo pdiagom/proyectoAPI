@@ -10,5 +10,5 @@ public interface SalidaService {
     List<Salida> findAllSalidas();
     Salida saveSalida(Salida salida);
     Salida updateSalida(Integer id,Salida salida);
-    void deleteSalida(Integer id);
+    String deleteSalida(Integer id);
 }

@@ -45,6 +45,6 @@ public class BarcoServiceImpl implements BarcoService{
     @Override
     public String deleteBarco(String matricula) {
         barcoRepository.deleteById(matricula);
-        return "Patron borrado correctamente";
+        return "Barco borrado correctamente";
     }
 }

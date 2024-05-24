@@ -47,7 +47,8 @@ public class SocioServiceImpl implements SocioService{
     }
 
     @Override
-    public void deleteSocio(String dni) {
+    public String deleteSocio(String dni) {
     socioRepository.deleteById(dni);
+    return "Socio borrado correctamente";
     }
 }

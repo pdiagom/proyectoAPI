@@ -10,6 +10,6 @@ public interface PatronService {
     List<Patron> findAllPatrones();
     Patron savePatron(Patron patron);
     Patron updatePatron(int id, Patron patron);
-    void deletePatron(int id);
+    String deletePatron(int id);
 
 }
