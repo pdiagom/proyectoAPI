@@ -23,25 +23,27 @@ public class SalidaServiceImpl implements SalidaService{
     @Override
     public Salida updateSalida(Integer id, Salida salida) {
 
-        Salida salidaDatabase = salidaRepository.findById(id).get();
+        Salida salida_db = salidaRepository.findById(id).get();
 
         if(Objects.nonNull(salida.getDestino()) && !"".equalsIgnoreCase(salida.getDestino())){
-            salidaDatabase.setDestino(salida.getDestino());
+            salida_db.setDestino(salida.getDestino());
         }
         if(Objects.nonNull(salida.getPatron_nombre()) && !"".equalsIgnoreCase(salida.getPatron_nombre())){
-            salidaDatabase.setPatron_nombre(salida.getPatron_nombre());
+            salida_db.setPatron_nombre(salida.getPatron_nombre());
         }
         if(Objects.nonNull(salida.getPatron_apellido()) && !"".equalsIgnoreCase(salida.getPatron_apellido())){
-            salidaDatabase.setPatron_apellido(salida.getPatron_apellido());
+            salida_db.setPatron_apellido(salida.getPatron_apellido());
         }
-        if(Objects.nonNull(salida.getPatron_id()) && !"".equalsIgnoreCase(salida.getPatron_id())){
-            salidaDatabase.setPatron_id(salida.getPatron_id());
+        if(salida.getId_patron()>0){
+            salida_db.setId_patron(salida.getId_patron());
+        }else{
+            salida_db.setId_patron(salida_db.getId_patron());
         }
         if(Objects.nonNull(salida.getBarco_matricula()) && !"".equalsIgnoreCase(salida.getBarco_matricula())){
-            salidaDatabase.setBarco_matricula(salida.getBarco_matricula());
+            salida_db.setBarco_matricula(salida.getBarco_matricula());
         }
 
-        return salidaRepository.save(salidaDatabase);
+        return salidaRepository.save(salida_db);
     }
 
     @Override

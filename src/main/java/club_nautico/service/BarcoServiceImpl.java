@@ -26,20 +26,20 @@ public class BarcoServiceImpl implements BarcoService{
 
     @Override
     public Barco updateBarco(String matricula, Barco barco) {
-        Barco b=barcoRepository.findById(matricula).get();
+        Barco barco_db=barcoRepository.findById(matricula).get();
         if(Objects.nonNull(barco.getNombre())&& !"".equalsIgnoreCase(barco.getNombre())){
-            b.setNombre(barco.getNombre());
+            barco_db.setNombre(barco.getNombre());
         }
         if(Objects.nonNull(barco.getAmarre())&& !"".equalsIgnoreCase(barco.getAmarre())){
-            b.setAmarre(barco.getAmarre());
+            barco_db.setAmarre(barco.getAmarre());
 
         }
         if(barco.getCuota()>0){
-            b.setCuota(barco.getCuota());
+            barco_db.setCuota(barco.getCuota());
         }
 
 
-        return barcoRepository.save(b);
+        return barcoRepository.save(barco_db);
     }
 
     @Override

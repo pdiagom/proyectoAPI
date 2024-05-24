@@ -15,16 +15,16 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor  //El constructor sin parametros
 public class Socio {
     @Id
-    private String dni;
+    private String socio_dni;
     private String nombre;
     private String apellido;
 
-    public String getDni() {
-        return dni;
+    public String getSocio_dni() {
+        return socio_dni;
     }
 
-    public void setDni(String dni) {
-        this.dni = dni;
+    public void setSocio_dni(String socio_dni) {
+        this.socio_dni = socio_dni;
     }
 
     public String getNombre() {

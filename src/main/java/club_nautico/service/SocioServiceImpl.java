@@ -31,8 +31,8 @@ public class SocioServiceImpl implements SocioService{
 
         Socio socio_db =socioRepository.findById(dni).get();
 
-        if(Objects.nonNull(socio.getDni()) && !" ".equalsIgnoreCase(socio.getDni())){
-            socio_db.setDni(socio.getDni());
+        if(Objects.nonNull(socio.getSocio_dni()) && !" ".equalsIgnoreCase(socio.getSocio_dni())){
+            socio_db.setSocio_dni(socio.getSocio_dni());
         }
 
         if(Objects.nonNull(socio.getNombre()) && !" ".equalsIgnoreCase(socio.getNombre())){
