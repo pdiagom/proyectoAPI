@@ -30,7 +30,6 @@ public class SocioController {
         return socioService.saveSocio(socio);
     }
 
-
     @PutMapping("/updateSocios/{dni}")
     public Socio updateSocio(@PathVariable String dni, @RequestBody Socio socio){
         return socioService.updateSocio(dni,socio);
