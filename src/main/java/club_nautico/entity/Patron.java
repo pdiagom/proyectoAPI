@@ -22,6 +22,14 @@ public class Patron {
     private String socio_dni;
 
 
+    public int getId_patron() {
+        return id_patron;
+    }
+
+    public void setId_patron(int id_patron) {
+        this.id_patron = id_patron;
+    }
+
     public String getNombre() {
         return nombre;
     }
