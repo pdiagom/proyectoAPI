@@ -26,7 +26,16 @@ public class Salida {
     private String destino;
     private String patron_nombre;
     private String patron_apellido;
-    private String patron_dni;
+
+    public String getPatron_id() {
+        return patron_id;
+    }
+
+    public void setPatron_id(String patron_id) {
+        this.patron_id = patron_id;
+    }
+
+    private String patron_id;
     private String barco_matricula;
 
 
@@ -54,13 +63,6 @@ public class Salida {
         this.patron_apellido = patron_apellido;
     }
 
-    public String getPatron_dni() {
-        return patron_dni;
-    }
-
-    public void setPatron_dni(String patron_dni) {
-        this.patron_dni = patron_dni;
-    }
 
     public String getBarco_matricula() {
         return barco_matricula;

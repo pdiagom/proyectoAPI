@@ -10,7 +10,7 @@ import java.util.List;
 
 
 @RestController
-@RequestMapping("/socio")
+
 public class SocioController {
     @Autowired
     private SocioService socioService;

@@ -34,8 +34,8 @@ public class SalidaServiceImpl implements SalidaService{
         if(Objects.nonNull(salida.getPatron_apellido()) && !"".equalsIgnoreCase(salida.getPatron_apellido())){
             salidaDatabase.setPatron_apellido(salida.getPatron_apellido());
         }
-        if(Objects.nonNull(salida.getPatron_dni()) && !"".equalsIgnoreCase(salida.getPatron_dni())){
-            salidaDatabase.setPatron_dni(salida.getPatron_dni());
+        if(Objects.nonNull(salida.getPatron_id()) && !"".equalsIgnoreCase(salida.getPatron_id())){
+            salidaDatabase.setPatron_id(salida.getPatron_id());
         }
         if(Objects.nonNull(salida.getBarco_matricula()) && !"".equalsIgnoreCase(salida.getBarco_matricula())){
             salidaDatabase.setBarco_matricula(salida.getBarco_matricula());
