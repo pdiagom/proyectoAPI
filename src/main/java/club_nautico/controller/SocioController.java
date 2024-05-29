@@ -40,7 +40,7 @@ public class SocioController {
     }
 
     @DeleteMapping("/deleteSocios/{dni}")
-    public String deleteSocio(@PathVariable String dni){
+    public String deleteSocio(@PathVariable String dni) throws NotFoundException {
         socioService.deleteSocio(dni);
         return "Socio borrado con éxito";
     }

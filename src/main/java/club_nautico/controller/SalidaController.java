@@ -34,7 +34,7 @@ public class SalidaController {
     }
 
     @DeleteMapping("/deleteSalida/{id}")
-    public String deleteSalida(@PathVariable Integer id){
+    public String deleteSalida(@PathVariable Integer id) throws NotFoundException {
         salidaService.deleteSalida(id);
         return "La salida se ha borrado correctamente";
     }

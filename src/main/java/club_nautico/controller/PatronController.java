@@ -9,6 +9,7 @@ import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
+
 @RestController
 
 public class PatronController {
@@ -34,7 +35,7 @@ public class PatronController {
     }
 
     @DeleteMapping("/deletePatron/{id}")
-    public String deletePatron(@PathVariable Integer id) {
+    public String deletePatron(@PathVariable Integer id) throws NotFoundException {
         patronService.deletePatron(id);
         return "El patron se ha borrado correctamente";
     }

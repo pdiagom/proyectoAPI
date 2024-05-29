@@ -19,7 +19,7 @@ public class RestResponseEntityExceptionHandler extends ResponseEntityExceptionH
     }
     @ExceptionHandler(DuplicateException.class)
     public ResponseEntity<ErrorMessage> handleDuplicateException(DuplicateException exception) {
-        ErrorMessage message = new ErrorMessage(exception.getMessage());
+        ErrorMessage message = new ErrorMessage(HttpStatus.CONFLICT,exception.getMessage());
         return ResponseEntity.status(HttpStatus.CONFLICT).body(message);
 
     }

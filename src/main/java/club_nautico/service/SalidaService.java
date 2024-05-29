@@ -13,5 +13,5 @@ public interface SalidaService {
     Salida findSalidaById(int id_salida) throws NotFoundException;
     Salida saveSalida(Salida salida);
     Salida updateSalida(Integer id,Salida salida);
-    String deleteSalida(Integer id);
+    String deleteSalida(Integer id) throws NotFoundException;
 }

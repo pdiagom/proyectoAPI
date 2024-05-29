@@ -13,6 +13,6 @@ public interface PatronService {
     Patron findPatronById(int id_patron) throws NotFoundException;
     Patron savePatron(Patron patron);
     Patron updatePatron(int id, Patron patron);
-    String deletePatron(int id);
+    String deletePatron(int id) throws NotFoundException;
 
 }

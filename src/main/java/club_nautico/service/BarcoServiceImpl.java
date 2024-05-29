@@ -1,6 +1,7 @@
 package club_nautico.service;
 
 import club_nautico.entity.Barco;
+import club_nautico.exception.DuplicateException;
 import club_nautico.exception.NotFoundException;
 import club_nautico.repository.BarcoRepository;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -26,9 +27,12 @@ public class BarcoServiceImpl implements BarcoService{
     }
 
     @Override
-    public Barco saveBarco(Barco barco) {
-
-        return barcoRepository.save(barco);
+    public Barco saveBarco(Barco barco) throws DuplicateException {
+        if(barcoRepository.findAll().contains(barco)){
+            throw new DuplicateException("El barco con matricula "+barco.getMatricula()+" ya esta registrado");
+        }else {
+            return barcoRepository.save(barco);
+        }
     }
 
     @Override
@@ -50,7 +54,10 @@ public class BarcoServiceImpl implements BarcoService{
     }
 
     @Override
-    public String deleteBarco(String matricula) {
+    public String deleteBarco(String matricula) throws NotFoundException {
+        Barco barco = barcoRepository.findById(matricula)
+                .orElseThrow(() -> new NotFoundException("Barco no encontrado con matrícula: " + matricula));
+
         barcoRepository.deleteById(matricula);
         return "Barco borrado correctamente";
     }
