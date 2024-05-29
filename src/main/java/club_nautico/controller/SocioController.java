@@ -38,7 +38,7 @@ public class SocioController {
     }
 
     @PutMapping("/updateSocios/{dni}")
-    public Socio updateSocio(@PathVariable String dni, @RequestBody Socio socio){
+    public Socio updateSocio(@PathVariable String dni, @RequestBody Socio socio) throws NotFoundException {
         return socioService.updateSocio(dni,socio);
     }
 

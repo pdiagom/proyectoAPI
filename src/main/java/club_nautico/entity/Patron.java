@@ -20,6 +20,9 @@ public class Patron {
     private String apellido;
     private String socio_dni;
 
+    public int getId_patron() {
+        return id_patron;
+    }
 
     public String getNombre() {
         return nombre;

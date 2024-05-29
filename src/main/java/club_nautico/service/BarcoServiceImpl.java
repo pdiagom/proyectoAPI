@@ -36,21 +36,25 @@ public class BarcoServiceImpl implements BarcoService{
     }
 
     @Override
-    public Barco updateBarco(String matricula, Barco barco) {
-        Barco barco_db=barcoRepository.findById(matricula).get();
-        if(Objects.nonNull(barco.getNombre())&& !"".equalsIgnoreCase(barco.getNombre())){
-            barco_db.setNombre(barco.getNombre());
-        }
-        if(Objects.nonNull(barco.getAmarre())&& !"".equalsIgnoreCase(barco.getAmarre())){
-            barco_db.setAmarre(barco.getAmarre());
+    public Barco updateBarco(String matricula, Barco barco) throws NotFoundException {
+        if(!barcoRepository.findAll().contains(barco)){
+            throw new NotFoundException("Barco con matricula " + barco.getMatricula() + " no encontrado");
+        }else {
+            Barco barco_db = barcoRepository.findById(matricula).get();
+            if (Objects.nonNull(barco.getNombre()) && !"".equalsIgnoreCase(barco.getNombre())) {
+                barco_db.setNombre(barco.getNombre());
+            }
+            if (Objects.nonNull(barco.getAmarre()) && !"".equalsIgnoreCase(barco.getAmarre())) {
+                barco_db.setAmarre(barco.getAmarre());
 
-        }
-        if(barco.getCuota()>0){
-            barco_db.setCuota(barco.getCuota());
-        }
+            }
+            if (barco.getCuota() > 0) {
+                barco_db.setCuota(barco.getCuota());
+            }
 
 
-        return barcoRepository.save(barco_db);
+            return barcoRepository.save(barco_db);
+        }
     }
 
     @Override

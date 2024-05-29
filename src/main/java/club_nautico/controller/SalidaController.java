@@ -32,7 +32,7 @@ public class SalidaController {
     }
 
     @PutMapping("/updateSalida/{id}")
-    public Salida updateSalida(@PathVariable Integer id,@RequestBody Salida salida){
+    public Salida updateSalida(@PathVariable Integer id,@RequestBody Salida salida) throws NotFoundException {
         return salidaService.updateSalida(id, salida);
     }
 

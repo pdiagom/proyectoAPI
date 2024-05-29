@@ -28,7 +28,7 @@ public class BarcoController {
         return barcoService.saveBarco(barco);
     }
     @PutMapping("/updateBarco/{matricula}")
-    public Barco updateBarco(@PathVariable("matricula") String matricula, @RequestBody Barco barco){
+    public Barco updateBarco(@PathVariable("matricula") String matricula, @RequestBody Barco barco) throws NotFoundException {
         return barcoService.updateBarco(matricula,barco);
     }
 

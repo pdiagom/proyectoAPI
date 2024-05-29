@@ -33,23 +33,26 @@ public class SalidaServiceImpl implements SalidaService{
     }
 
     @Override
-    public Salida updateSalida(Integer id, Salida salida) {
+    public Salida updateSalida(Integer id, Salida salida) throws NotFoundException {
+        if(!salidaRepository.findAll().contains(salida)){
+            throw new NotFoundException("Salida con fecha y hora " + salida.getFecha_hora() + " no encontrada");
+        }else {
+            Salida salida_db = salidaRepository.findById(id).get();
 
-        Salida salida_db = salidaRepository.findById(id).get();
+            if (Objects.nonNull(salida.getDestino()) && !"".equalsIgnoreCase(salida.getDestino())) {
+                salida_db.setDestino(salida.getDestino());
+            }
+            if (salida.getId_patron() > 0) {
+                salida_db.setId_patron(salida.getId_patron());
+            } else {
+                salida_db.setId_patron(salida_db.getId_patron());
+            }
+            if (Objects.nonNull(salida.getBarco_matricula()) && !"".equalsIgnoreCase(salida.getBarco_matricula())) {
+                salida_db.setBarco_matricula(salida.getBarco_matricula());
+            }
 
-        if(Objects.nonNull(salida.getDestino()) && !"".equalsIgnoreCase(salida.getDestino())){
-            salida_db.setDestino(salida.getDestino());
+            return salidaRepository.save(salida_db);
         }
-        if(salida.getId_patron()>0){
-            salida_db.setId_patron(salida.getId_patron());
-        }else{
-            salida_db.setId_patron(salida_db.getId_patron());
-        }
-        if(Objects.nonNull(salida.getBarco_matricula()) && !"".equalsIgnoreCase(salida.getBarco_matricula())){
-            salida_db.setBarco_matricula(salida.getBarco_matricula());
-        }
-
-        return salidaRepository.save(salida_db);
     }
 
     @Override

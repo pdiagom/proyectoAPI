@@ -36,18 +36,21 @@ public class PatronServiceImpl implements PatronService{
     }
 
     @Override
-    public Patron updatePatron(int id_patron, Patron patron) {
+    public Patron updatePatron(int id_patron, Patron patron) throws NotFoundException {
+        if(!patronRepository.findAll().contains(patron)){
+            throw new NotFoundException("Patron con id " + patron.getId_patron() + " no encontrado");
+        }else {
+            Patron patron_db = patronRepository.findById(id_patron).get();
 
-        Patron patron_db =patronRepository.findById(id_patron).get();
+            if (Objects.nonNull(patron.getNombre()) && !" ".equalsIgnoreCase(patron.getNombre())) {
+                patron_db.setNombre(patron.getNombre());
+            }
 
-        if(Objects.nonNull(patron.getNombre()) && !" ".equalsIgnoreCase(patron.getNombre())){
-            patron_db.setNombre(patron.getNombre());
+            if (Objects.nonNull(patron.getApellido()) && !" ".equalsIgnoreCase(patron.getApellido())) {
+                patron_db.setApellido(patron.getApellido());
+            }
+            return patronRepository.save(patron_db);
         }
-
-        if(Objects.nonNull(patron.getApellido()) && !" ".equalsIgnoreCase(patron.getApellido())){
-            patron_db.setApellido(patron.getApellido());
-        }
-        return patronRepository.save(patron_db);
     }
 
     @Override

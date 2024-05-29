@@ -39,22 +39,25 @@ public class SocioServiceImpl implements SocioService{
     }
 
     @Override
-    public Socio updateSocio(String dni, Socio socio) {
+    public Socio updateSocio(String dni, Socio socio) throws NotFoundException {
+        if(!socioRepository.findAll().contains(socio)){
+            throw new NotFoundException("Socio con dni " + socio.getSocio_dni() + " no encontrado");
+        }else {
+            Socio socio_db = socioRepository.findById(dni).get();
 
-        Socio socio_db =socioRepository.findById(dni).get();
+            if (Objects.nonNull(socio.getSocio_dni()) && !" ".equalsIgnoreCase(socio.getSocio_dni())) {
+                socio_db.setSocio_dni(socio.getSocio_dni());
+            }
 
-        if(Objects.nonNull(socio.getSocio_dni()) && !" ".equalsIgnoreCase(socio.getSocio_dni())){
-            socio_db.setSocio_dni(socio.getSocio_dni());
+            if (Objects.nonNull(socio.getNombre()) && !" ".equalsIgnoreCase(socio.getNombre())) {
+                socio_db.setNombre(socio.getNombre());
+            }
+
+            if (Objects.nonNull(socio.getApellido()) && !" ".equalsIgnoreCase(socio.getApellido())) {
+                socio_db.setApellido(socio.getApellido());
+            }
+            return socioRepository.save(socio_db);
         }
-
-        if(Objects.nonNull(socio.getNombre()) && !" ".equalsIgnoreCase(socio.getNombre())){
-            socio_db.setNombre(socio.getNombre());
-        }
-
-        if(Objects.nonNull(socio.getApellido()) && !" ".equalsIgnoreCase(socio.getApellido())){
-            socio_db.setApellido(socio.getApellido());
-        }
-        return socioRepository.save(socio_db);
     }
 
     @Override

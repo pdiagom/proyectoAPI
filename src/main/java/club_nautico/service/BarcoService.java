@@ -13,6 +13,6 @@ public interface BarcoService {
     List<Barco> findAllBarcos();
     Barco findBarcoById(String matricula) throws NotFoundException;
     Barco saveBarco(Barco barco) throws DuplicateException;
-    Barco updateBarco(String matricula, Barco barco);
+    Barco updateBarco(String matricula, Barco barco)throws NotFoundException;
     String deleteBarco(String matricula);
 }
