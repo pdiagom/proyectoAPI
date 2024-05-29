@@ -23,6 +23,7 @@ public class SocioServiceImpl implements SocioService{
 
     @Override
     public Socio saveSocio(Socio socio) {
+
         return socioRepository.save(socio);
     }
 
