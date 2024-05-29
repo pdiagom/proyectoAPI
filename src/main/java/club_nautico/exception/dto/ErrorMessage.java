@@ -18,4 +18,6 @@ public class ErrorMessage {
         this.status=httpStatus;
         this.message=message;
     }
+    public ErrorMessage(String message) {
+    }
 }

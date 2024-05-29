@@ -1,6 +1,7 @@
 package club_nautico.service;
 
 import club_nautico.entity.Patron;
+import club_nautico.exception.NotFoundException;
 import club_nautico.repository.PatronRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -20,8 +21,8 @@ public class PatronServiceImpl implements PatronService{
     }
 
     @Override
-    public Optional<Patron> findPatronById(int id_patron) {
-        return patronRepository.findById(id_patron);
+    public Patron findPatronById(int id_patron) throws NotFoundException {
+        return patronRepository.findById(id_patron).orElseThrow(()-> new NotFoundException("Patron con id " + id_patron + " no encontrado"));
     }
 
     @Override

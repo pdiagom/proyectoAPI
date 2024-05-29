@@ -1,12 +1,13 @@
 package club_nautico.service;
 
 import club_nautico.entity.Barco;
+import club_nautico.exception.NotFoundException;
 import club_nautico.repository.BarcoRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import java.util.List;
 import java.util.Objects;
-import java.util.Optional;
+
 
 @Service
 public class BarcoServiceImpl implements BarcoService{
@@ -20,8 +21,8 @@ public class BarcoServiceImpl implements BarcoService{
     }
 
     @Override
-    public Optional<Barco> findBarcoById(String matricula) {
-        return barcoRepository.findById(matricula);
+    public Barco findBarcoById(String matricula) throws NotFoundException {
+        return barcoRepository.findById(matricula).orElseThrow(()-> new NotFoundException("Barco con matricula " + matricula + " no encontrado"));
     }
 
     @Override

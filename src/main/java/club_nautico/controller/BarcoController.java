@@ -1,12 +1,12 @@
 package club_nautico.controller;
 
 import club_nautico.entity.Barco;
+import club_nautico.exception.NotFoundException;
 import club_nautico.service.BarcoService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
-import java.util.Optional;
 
 @RestController
 public class BarcoController {
@@ -19,7 +19,7 @@ public class BarcoController {
     }
 
     @GetMapping("/findBarcoById/{matricula}")
-    public Optional<Barco> findBarcoById(@PathVariable String matricula){return barcoService.findBarcoById(matricula);}
+    public Barco findBarcoById(@PathVariable String matricula) throws NotFoundException {return barcoService.findBarcoById(matricula);}
 
     @PostMapping("/saveBarco")
     public Barco saveLocal(@RequestBody Barco barco){

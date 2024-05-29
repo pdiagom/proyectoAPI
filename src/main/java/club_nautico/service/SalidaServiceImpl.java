@@ -1,6 +1,7 @@
 package club_nautico.service;
 
 import club_nautico.entity.Salida;
+import club_nautico.exception.NotFoundException;
 import club_nautico.repository.SalidaRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -17,8 +18,8 @@ public class SalidaServiceImpl implements SalidaService{
     public List<Salida> findAllSalidas() {return salidaRepository.findAll();}
 
     @Override
-    public Optional<Salida> findSalidaById(int id_salida) {
-        return salidaRepository.findById(id_salida);
+    public Salida findSalidaById(int id_salida) throws NotFoundException {
+        return salidaRepository.findById(id_salida).orElseThrow(()-> new NotFoundException("Salida con id " + id_salida + " no encontrado"));
     }
 
     @Override
