@@ -3,6 +3,7 @@ package club_nautico.controller;
 
 import club_nautico.entity.Patron;
 import club_nautico.entity.Salida;
+import club_nautico.exception.DuplicateException;
 import club_nautico.exception.NotFoundException;
 import club_nautico.service.SalidaService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -26,7 +27,7 @@ public class SalidaController {
     public Salida findSalidaById(@PathVariable Integer id_salida) throws NotFoundException {return salidaService.findSalidaById(id_salida);}
 
     @PostMapping("/saveSalida")
-    public Salida saveSalida(@RequestBody Salida salida){
+    public Salida saveSalida(@RequestBody Salida salida) throws DuplicateException {
         return salidaService.saveSalida(salida);
     }
 

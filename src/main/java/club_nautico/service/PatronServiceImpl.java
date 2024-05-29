@@ -1,6 +1,7 @@
 package club_nautico.service;
 
 import club_nautico.entity.Patron;
+import club_nautico.exception.DuplicateException;
 import club_nautico.exception.NotFoundException;
 import club_nautico.repository.PatronRepository;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -26,8 +27,12 @@ public class PatronServiceImpl implements PatronService{
     }
 
     @Override
-    public Patron savePatron(Patron patron) {
-        return patronRepository.save(patron);
+    public Patron savePatron(Patron patron) throws DuplicateException {
+        if(patronRepository.findAll().contains(patron)){
+            throw new DuplicateException("El patron con nombre "+patron.getNombre()+" ya esta registrado");
+        }else {
+            return patronRepository.save(patron);
+        }
     }
 
     @Override

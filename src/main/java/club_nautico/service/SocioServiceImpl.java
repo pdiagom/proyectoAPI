@@ -2,6 +2,7 @@ package club_nautico.service;
 
 import club_nautico.entity.Barco;
 import club_nautico.entity.Socio;
+import club_nautico.exception.DuplicateException;
 import club_nautico.exception.NotFoundException;
 import club_nautico.repository.BarcoRepository;
 import club_nautico.repository.SocioRepository;
@@ -29,9 +30,12 @@ public class SocioServiceImpl implements SocioService{
     }
 
     @Override
-    public Socio saveSocio(Socio socio) {
-
-        return socioRepository.save(socio);
+    public Socio saveSocio(Socio socio) throws DuplicateException {
+        if (socioRepository.findAll().contains(socio)) {
+            throw new DuplicateException("El socio con dni " + socio.getSocio_dni() + " ya esta registrado");
+        } else {
+            return socioRepository.save(socio);
+        }
     }
 
     @Override

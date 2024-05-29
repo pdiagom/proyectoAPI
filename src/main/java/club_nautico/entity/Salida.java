@@ -35,6 +35,9 @@ public class Salida {
         this.destino = destino;
     }
 
+    public OffsetDateTime getFecha_hora() {
+        return fecha_hora;
+    }
 
     public int getId_patron() {
         return id_patron;

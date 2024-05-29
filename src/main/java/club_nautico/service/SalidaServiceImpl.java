@@ -1,6 +1,7 @@
 package club_nautico.service;
 
 import club_nautico.entity.Salida;
+import club_nautico.exception.DuplicateException;
 import club_nautico.exception.NotFoundException;
 import club_nautico.repository.SalidaRepository;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -23,8 +24,12 @@ public class SalidaServiceImpl implements SalidaService{
     }
 
     @Override
-    public Salida saveSalida(Salida salida) {
-        return salidaRepository.save(salida);
+    public Salida saveSalida(Salida salida) throws DuplicateException {
+        if(salidaRepository.findAll().contains(salida)){
+            throw new DuplicateException("La salida con fecha y hora "+salida.getFecha_hora()+" ya esta registrada");
+        }else {
+            return salidaRepository.save(salida);
+        }
     }
 
     @Override
