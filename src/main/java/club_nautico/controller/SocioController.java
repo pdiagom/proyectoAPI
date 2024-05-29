@@ -31,4 +31,14 @@ public class SocioController {
     }
 
 
+    @PutMapping("/updateSocios/{dni}")
+    public Socio updateSocio(@PathVariable String dni, @RequestBody Socio socio){
+        return socioService.updateSocio(dni,socio);
+    }
+
+    @DeleteMapping("/deleteSocios/{dni}")
+    public String deleteSocio(@PathVariable String dni){
+        socioService.deleteSocio(dni);
+        return "Socio borrado con éxito";
+    }
 }
