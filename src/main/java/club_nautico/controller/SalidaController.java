@@ -1,7 +1,6 @@
 package club_nautico.controller;
 
 
-import club_nautico.entity.Patron;
 import club_nautico.entity.Salida;
 import club_nautico.exception.DuplicateException;
 import club_nautico.exception.NotFoundException;
@@ -10,7 +9,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
-import java.util.Optional;
 
 @RestController
 
@@ -37,7 +35,7 @@ public class SalidaController {
     }
 
     @DeleteMapping("/deleteSalida/{id}")
-    public String deleteSalida(@PathVariable Integer id){
+    public String deleteSalida(@PathVariable Integer id) throws NotFoundException {
         salidaService.deleteSalida(id);
         return "La salida se ha borrado correctamente";
     }

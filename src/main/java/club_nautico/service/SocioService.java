@@ -14,6 +14,6 @@ public interface SocioService {
     Socio findSocioById(String socio_dni) throws NotFoundException;
     Socio saveSocio(Socio socio) throws DuplicateException;
     Socio updateSocio(String dni, Socio socio)throws NotFoundException;
-    String deleteSocio(String id);
+    String deleteSocio(String id)throws NotFoundException;
 
 }

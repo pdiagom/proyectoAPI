@@ -1,7 +1,6 @@
 package club_nautico.controller;
 
 
-import club_nautico.entity.Barco;
 import club_nautico.entity.Patron;
 import club_nautico.exception.DuplicateException;
 import club_nautico.exception.NotFoundException;
@@ -37,7 +36,7 @@ public class PatronController {
     }
 
     @DeleteMapping("/deletePatron/{id}")
-    public String deletePatron(@PathVariable Integer id) {
+    public String deletePatron(@PathVariable Integer id) throws NotFoundException {
         patronService.deletePatron(id);
         return "El patron se ha borrado correctamente";
     }

@@ -8,7 +8,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
-import java.util.Optional;
 
 @RestController
 public class BarcoController {
@@ -33,7 +32,7 @@ public class BarcoController {
     }
 
     @DeleteMapping("/deleteBarco/{matricula}")
-    public String deleteBarco(@PathVariable("matricula")String matricula ){
+    public String deleteBarco(@PathVariable("matricula")String matricula ) throws NotFoundException {
     barcoService.deleteBarco(matricula);
     return "El barco se ha eliminado correctamente";
     }

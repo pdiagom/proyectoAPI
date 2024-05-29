@@ -13,11 +13,11 @@ public class ErrorMessage {
     private HttpStatus status;
     private String message;
 
-    public ErrorMessage(HttpStatus status, String message) {
-        this.status = status;
-        this.message = message;
-    }
 
+    public ErrorMessage(HttpStatus httpStatus, String message) {
+        this.status=httpStatus;
+        this.message=message;
+    }
     public ErrorMessage(String message) {
     }
 }

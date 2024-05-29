@@ -1,17 +1,17 @@
 package club_nautico.service;
 
-import club_nautico.entity.Barco;
+
 import club_nautico.entity.Socio;
 import club_nautico.exception.DuplicateException;
 import club_nautico.exception.NotFoundException;
-import club_nautico.repository.BarcoRepository;
+
 import club_nautico.repository.SocioRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
 import java.util.Objects;
-import java.util.Optional;
+
 
 @Service
 public class SocioServiceImpl implements SocioService{
@@ -26,7 +26,8 @@ public class SocioServiceImpl implements SocioService{
 
     @Override
     public Socio findSocioById(String socio_dni) throws NotFoundException {
-        return socioRepository.findById(socio_dni).orElseThrow(()-> new NotFoundException("Socio con dni " + socio_dni + " no encontrado"));
+
+        return socioRepository.findById(socio_dni).orElseThrow(()-> new NotFoundException("Socio no encontrado con DNI: " + socio_dni));
     }
 
     @Override
@@ -61,8 +62,11 @@ public class SocioServiceImpl implements SocioService{
     }
 
     @Override
-    public String deleteSocio(String dni) {
-    socioRepository.deleteById(dni);
-    return "Socio borrado correctamente";
+    public String deleteSocio(String socio_dni) throws NotFoundException {
+        Socio socio = socioRepository.findById(socio_dni)
+                .orElseThrow(() -> new NotFoundException("Socio no encontrado con DNI: " + socio_dni));
+
+        socioRepository.deleteById(socio_dni);
+        return "Socio borrado correctamente";
     }
 }

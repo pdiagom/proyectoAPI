@@ -1,7 +1,6 @@
 package club_nautico.controller;
 
 
-import club_nautico.entity.Patron;
 import club_nautico.entity.Socio;
 import club_nautico.exception.DuplicateException;
 import club_nautico.exception.NotFoundException;
@@ -10,7 +9,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
-import java.util.Optional;
 
 
 @RestController
@@ -18,9 +16,6 @@ import java.util.Optional;
 public class SocioController {
     @Autowired
     private SocioService socioService;
-
-    //private static final String template="Hola, %s";
-    //private final AtomicLong counter= new AtomicLong();
 
 
     @GetMapping("/findAllSocios")
@@ -30,7 +25,10 @@ public class SocioController {
     }
 
     @GetMapping("/findSocioById/{socio_dni}")
-    public Socio findSocioById(@PathVariable String socio_dni) throws NotFoundException {return socioService.findSocioById(socio_dni);}
+    public Socio findSocioById(@PathVariable String socio_dni) throws NotFoundException{
+        return socioService.findSocioById(socio_dni);
+    }
+
 
     @PostMapping("/saveSocios")
     public Socio saveSocio(@RequestBody Socio socio) throws DuplicateException {
@@ -43,7 +41,7 @@ public class SocioController {
     }
 
     @DeleteMapping("/deleteSocios/{dni}")
-    public String deleteSocio(@PathVariable String dni){
+    public String deleteSocio(@PathVariable String dni) throws NotFoundException {
         socioService.deleteSocio(dni);
         return "Socio borrado con éxito";
     }

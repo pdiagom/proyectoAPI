@@ -56,7 +56,9 @@ public class SalidaServiceImpl implements SalidaService{
     }
 
     @Override
-    public String deleteSalida(Integer id) {
+    public String deleteSalida(Integer id) throws NotFoundException {
+        Salida salida = salidaRepository.findById(id)
+                .orElseThrow(() -> new NotFoundException("Salida no encontrada con ID: " + id));
         salidaRepository.deleteById(id);
         return "Salida borrada correctamente";
     }
