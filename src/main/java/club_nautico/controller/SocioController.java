@@ -15,9 +15,6 @@ public class SocioController {
     @Autowired
     private SocioService socioService;
 
-    //private static final String template="Hola, %s";
-    //private final AtomicLong counter= new AtomicLong();
-
 
     @GetMapping("/findAllSocios")
     public List<Socio> findAllSocios(){
