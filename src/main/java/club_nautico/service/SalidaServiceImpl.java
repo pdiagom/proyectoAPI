@@ -28,7 +28,6 @@ public class SalidaServiceImpl implements SalidaService{
         if(Objects.nonNull(salida.getDestino()) && !"".equalsIgnoreCase(salida.getDestino())){
             salida_db.setDestino(salida.getDestino());
         }
-
         if(salida.getId_patron()>0){
             salida_db.setId_patron(salida.getId_patron());
         }else{
