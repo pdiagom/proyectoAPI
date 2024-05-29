@@ -21,7 +21,7 @@ public class PatronController {
         return patronService.findAllPatrones();
     }
 
-    @GetMapping("findBarcoById/{id_patron}")
+    @GetMapping("/findPatronById/{id_patron}")
     public Optional<Patron> findPatronById(@PathVariable Integer id_patron){return patronService.findPatronById(id_patron);}
 
     @PostMapping("/savePatron")

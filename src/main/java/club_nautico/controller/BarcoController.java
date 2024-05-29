@@ -18,7 +18,7 @@ public class BarcoController {
         return barcoService.findAllBarcos();
     }
 
-    @GetMapping("findBarcoById/{matricula}")
+    @GetMapping("/findBarcoById/{matricula}")
     public Optional<Barco> findBarcoById(@PathVariable String matricula){return barcoService.findBarcoById(matricula);}
 
     @PostMapping("/saveBarco")
