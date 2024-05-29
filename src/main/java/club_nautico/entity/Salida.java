@@ -21,11 +21,9 @@ import java.time.ZoneOffset;
 public class Salida {
 
     @Id
-    private int id;
+    private int id_salida;
     private OffsetDateTime fecha_hora = OffsetDateTime.now(ZoneOffset.UTC);
     private String destino;
-    private String patron_nombre;
-    private String patron_apellido;
     private int id_patron;
     private String barco_matricula;
 
@@ -36,22 +34,6 @@ public class Salida {
 
     public void setDestino(String destino) {
         this.destino = destino;
-    }
-
-    public String getPatron_nombre() {
-        return patron_nombre;
-    }
-
-    public void setPatron_nombre(String patron_nombre) {
-        this.patron_nombre = patron_nombre;
-    }
-
-    public String getPatron_apellido() {
-        return patron_apellido;
-    }
-
-    public void setPatron_apellido(String patron_apellido) {
-        this.patron_apellido = patron_apellido;
     }
 
     public int getId_patron() {
