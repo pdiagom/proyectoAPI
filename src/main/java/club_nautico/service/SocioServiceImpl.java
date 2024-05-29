@@ -2,6 +2,7 @@ package club_nautico.service;
 
 import club_nautico.entity.Barco;
 import club_nautico.entity.Socio;
+import club_nautico.exception.NotFoundException;
 import club_nautico.repository.BarcoRepository;
 import club_nautico.repository.SocioRepository;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -23,8 +24,8 @@ public class SocioServiceImpl implements SocioService{
     }
 
     @Override
-    public Optional<Socio> findSocioById(String socio_dni) {
-        return socioRepository.findById(socio_dni);
+    public Socio findSocioById(String socio_dni) throws NotFoundException {
+        return socioRepository.findById(socio_dni).orElseThrow(()-> new NotFoundException("Socio con dni " + socio_dni + " no encontrado"));
     }
 
     @Override

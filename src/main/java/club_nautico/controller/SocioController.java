@@ -3,6 +3,7 @@ package club_nautico.controller;
 
 import club_nautico.entity.Patron;
 import club_nautico.entity.Socio;
+import club_nautico.exception.NotFoundException;
 import club_nautico.service.SocioService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
@@ -28,7 +29,7 @@ public class SocioController {
     }
 
     @GetMapping("findSocioById/{socio_dni}")
-    public Optional<Socio> findSocioById(@PathVariable String socio_dni){return socioService.findSocioById(socio_dni);}
+    public Socio findSocioById(@PathVariable String socio_dni) throws NotFoundException {return socioService.findSocioById(socio_dni);}
 
     @PostMapping("/saveSocios")
     public Socio saveSocio(@RequestBody Socio socio){
