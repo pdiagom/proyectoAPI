@@ -1,6 +1,7 @@
 package club_nautico.service;
 
 import club_nautico.entity.Barco;
+import club_nautico.exception.DuplicateException;
 import club_nautico.exception.NotFoundException;
 import club_nautico.repository.BarcoRepository;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -26,9 +27,12 @@ public class BarcoServiceImpl implements BarcoService{
     }
 
     @Override
-    public Barco saveBarco(Barco barco) {
-
-        return barcoRepository.save(barco);
+    public Barco saveBarco(Barco barco) throws DuplicateException {
+        if(barcoRepository.findAll().contains(barco)){
+            throw new DuplicateException();
+        }else {
+            return barcoRepository.save(barco);
+        }
     }
 
     @Override

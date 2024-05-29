@@ -28,7 +28,7 @@ public class SocioController {
         return socioService.findAllSocios();
     }
 
-    @GetMapping("findSocioById/{socio_dni}")
+    @GetMapping("/findSocioById/{socio_dni}")
     public Socio findSocioById(@PathVariable String socio_dni) throws NotFoundException {return socioService.findSocioById(socio_dni);}
 
     @PostMapping("/saveSocios")

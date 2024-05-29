@@ -22,7 +22,7 @@ public class SalidaController {
         return salidaService.findAllSalidas();
     }
 
-    @GetMapping("findSalidaById/{id_salida}")
+    @GetMapping("/findSalidaById/{id_salida}")
     public Salida findSalidaById(@PathVariable Integer id_salida) throws NotFoundException {return salidaService.findSalidaById(id_salida);}
 
     @PostMapping("/saveSalida")
