@@ -10,11 +10,10 @@ import lombok.NoArgsConstructor;
 @Entity
 @Table(name="patron")
 @Data               //Todos los getters y setters
-@AllArgsConstructor //Todos los constructores de salida
+@AllArgsConstructor
 @NoArgsConstructor  //El constructor sin parametros
 public class Patron {
 
-    //@GeneratedValue(strategy = GenerationType.AUTO)
     @Id
     private int id_patron;
     private String nombre;

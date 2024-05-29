@@ -17,7 +17,6 @@ import java.time.ZoneOffset;
 @Data               //Todos los getters y setters
 @AllArgsConstructor //Todos los constructores de salida
 @NoArgsConstructor  //El constructor sin parametros
-@Builder
 public class Salida {
 
     @Id
@@ -35,6 +34,7 @@ public class Salida {
     public void setDestino(String destino) {
         this.destino = destino;
     }
+
 
     public int getId_patron() {
         return id_patron;

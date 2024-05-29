@@ -1,13 +1,13 @@
 package club_nautico.service;
 
 import club_nautico.entity.Patron;
-import club_nautico.entity.Socio;
 import club_nautico.repository.PatronRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
 import java.util.Objects;
+import java.util.Optional;
 
 @Service
 public class PatronServiceImpl implements PatronService{
@@ -17,6 +17,11 @@ public class PatronServiceImpl implements PatronService{
     @Override
     public List<Patron> findAllPatrones() {
         return patronRepository.findAll();
+    }
+
+    @Override
+    public Optional<Patron> findPatronById(int id_patron) {
+        return patronRepository.findById(id_patron);
     }
 
     @Override
@@ -40,7 +45,8 @@ public class PatronServiceImpl implements PatronService{
     }
 
     @Override
-    public void deletePatron(int id) {
+    public String deletePatron(int id) {
         patronRepository.deleteById(id);
+        return "Patron borrado correctamente";
     }
 }
