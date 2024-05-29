@@ -29,7 +29,7 @@ public class BarcoServiceImpl implements BarcoService{
     @Override
     public Barco saveBarco(Barco barco) throws DuplicateException {
         if(barcoRepository.findAll().contains(barco)){
-            throw new DuplicateException();
+            throw new DuplicateException("El barco con matricula "+barco.getMatricula()+" ya esta registrado");
         }else {
             return barcoRepository.save(barco);
         }
