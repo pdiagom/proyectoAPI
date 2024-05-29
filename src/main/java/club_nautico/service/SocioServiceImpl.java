@@ -9,6 +9,7 @@ import org.springframework.stereotype.Service;
 
 import java.util.List;
 import java.util.Objects;
+import java.util.Optional;
 
 @Service
 public class SocioServiceImpl implements SocioService{
@@ -19,6 +20,11 @@ public class SocioServiceImpl implements SocioService{
     public List<Socio> findAllSocios(){
 
         return socioRepository.findAll();
+    }
+
+    @Override
+    public Optional<Socio> findSocioById(String socio_dni) {
+        return socioRepository.findById(socio_dni);
     }
 
     @Override

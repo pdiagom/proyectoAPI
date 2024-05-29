@@ -7,6 +7,7 @@ import org.springframework.stereotype.Service;
 
 import java.util.List;
 import java.util.Objects;
+import java.util.Optional;
 
 @Service
 public class PatronServiceImpl implements PatronService{
@@ -16,6 +17,11 @@ public class PatronServiceImpl implements PatronService{
     @Override
     public List<Patron> findAllPatrones() {
         return patronRepository.findAll();
+    }
+
+    @Override
+    public Optional<Patron> findPatronById(int id_patron) {
+        return patronRepository.findById(id_patron);
     }
 
     @Override

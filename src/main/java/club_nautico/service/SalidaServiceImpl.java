@@ -6,6 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import java.util.List;
 import java.util.Objects;
+import java.util.Optional;
 
 @Service
 public class SalidaServiceImpl implements SalidaService{
@@ -14,6 +15,11 @@ public class SalidaServiceImpl implements SalidaService{
 
     @Override
     public List<Salida> findAllSalidas() {return salidaRepository.findAll();}
+
+    @Override
+    public Optional<Salida> findSalidaById(int id_salida) {
+        return salidaRepository.findById(id_salida);
+    }
 
     @Override
     public Salida saveSalida(Salida salida) {
