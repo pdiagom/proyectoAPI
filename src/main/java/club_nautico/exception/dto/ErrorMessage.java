@@ -14,9 +14,4 @@ public class ErrorMessage {
     private String message;
 
 
-    public ErrorMessage(HttpStatus status, String message) {
-        this.status = status;
-        this.message = message;
-    }
-
 }
