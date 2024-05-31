@@ -7,9 +7,9 @@ import club_nautico.repository.PatronRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.Iterator;
 import java.util.List;
 import java.util.Objects;
-import java.util.Optional;
 
 @Service
 public class PatronServiceImpl implements PatronService{
@@ -28,8 +28,21 @@ public class PatronServiceImpl implements PatronService{
 
     @Override
     public Patron savePatron(Patron patron) throws DuplicateException {
-        if(patronRepository.findAll().contains(patron)){
-            throw new DuplicateException("El patron con nombre "+patron.getNombre()+" ya esta registrado");
+        Iterator<Patron> iter= patronRepository.findAll().iterator();
+        boolean encontrado=false;
+        while(iter.hasNext()){
+            Patron patron_aux= iter.next();
+            if(patron_aux.getNombre().equals(patron.getNombre())){
+                if(patron_aux.getApellido().equals(patron.getApellido())) {
+                    encontrado = true;
+                }
+            }
+        }
+        if(!patronRepository.findById(patron.getId_patron()).isEmpty()){
+            throw new DuplicateException("El patron con id "+patron.getId_patron()+" ya esta registrado");
+        }
+        if(encontrado){
+            throw new DuplicateException("El patron con nombre "+patron.getNombre()+" "+patron.getApellido()+" ya esta registrado");
         }else {
             return patronRepository.save(patron);
         }

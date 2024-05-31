@@ -32,7 +32,7 @@ public class SocioServiceImpl implements SocioService{
 
     @Override
     public Socio saveSocio(Socio socio) throws DuplicateException {
-        if (socioRepository.findAll().contains(socio)) {
+        if (!socioRepository.findById(socio.getSocio_dni()).isEmpty()) {
             throw new DuplicateException("El socio con dni " + socio.getSocio_dni() + " ya esta registrado");
         } else {
             return socioRepository.save(socio);

@@ -28,7 +28,7 @@ public class BarcoServiceImpl implements BarcoService{
 
     @Override
     public Barco saveBarco(Barco barco) throws DuplicateException {
-        if(barcoRepository.findAll().contains(barco)){
+        if(!barcoRepository.findById(barco.getMatricula()).isEmpty()){
             throw new DuplicateException("El barco con matricula "+barco.getMatricula()+" ya esta registrado");
         }else {
             return barcoRepository.save(barco);
@@ -38,6 +38,7 @@ public class BarcoServiceImpl implements BarcoService{
     @Override
     public Barco updateBarco(String matricula, Barco barco) throws NotFoundException {
         if(!barcoRepository.findAll().contains(barco)){
+
             throw new NotFoundException("Barco con matricula " + barco.getMatricula() + " no encontrado");
         }else {
             Barco barco_db = barcoRepository.findById(matricula).get();
