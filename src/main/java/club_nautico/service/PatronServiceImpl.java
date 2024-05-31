@@ -34,10 +34,8 @@ public class PatronServiceImpl implements PatronService{
         boolean encontrado=false;
         while(iter.hasNext()){
             Patron patron_aux= iter.next();
-            if(patron_aux.getNombre().equals(patron.getNombre())){
-                if(patron_aux.getApellido().equals(patron.getApellido())) {
+            if(patron_aux.getNombre().equals(patron.getNombre())&&patron_aux.getApellido().equals(patron.getApellido())){
                     encontrado = true;
-                }
             }
         }
         if(patronRepository.findById(patron.getId_patron()).isPresent()){

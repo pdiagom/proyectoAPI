@@ -35,7 +35,8 @@ public class SalidaServiceImpl implements SalidaService{
         while (iter.hasNext()) {
             Salida salidaAux = iter.next();
             if (salidaAux.getDestino().equals(salida.getDestino()) &&
-                    salidaAux.getFecha_hora().equals(salida.getFecha_hora())) {
+                    salidaAux.getFecha_hora().equals(salida.getFecha_hora()) &&
+                    salidaAux.getBarco_matricula().equals(salida.getBarco_matricula())) {
                 encontrado = true;
                 break;
             }
