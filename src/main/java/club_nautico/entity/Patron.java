@@ -18,7 +18,6 @@ public class Patron {
     private int id_patron;
     private String nombre;
     private String apellido;
-    @OneToOne
     private String socio_dni;
 
     public int getId_patron() {

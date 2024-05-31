@@ -19,7 +19,6 @@ public class Barco {
     private String nombre;
     private String amarre;
     private double cuota;
-    @OneToMany
     private String socio_dni;
 
     public String getMatricula() {
