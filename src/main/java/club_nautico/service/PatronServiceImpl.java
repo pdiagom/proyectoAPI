@@ -4,6 +4,7 @@ import club_nautico.entity.Patron;
 import club_nautico.exception.DuplicateException;
 import club_nautico.exception.NotFoundException;
 import club_nautico.repository.PatronRepository;
+import club_nautico.repository.SocioRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -15,6 +16,7 @@ import java.util.Objects;
 public class PatronServiceImpl implements PatronService{
     @Autowired
     PatronRepository patronRepository;
+    SocioRepository socioRepository;
 
     @Override
     public List<Patron> findAllPatrones() {
@@ -27,7 +29,7 @@ public class PatronServiceImpl implements PatronService{
     }
 
     @Override
-    public Patron savePatron(Patron patron) throws DuplicateException {
+    public Patron savePatron(Patron patron) throws DuplicateException, NotFoundException {
         Iterator<Patron> iter= patronRepository.findAll().iterator();
         boolean encontrado=false;
         while(iter.hasNext()){
@@ -38,8 +40,11 @@ public class PatronServiceImpl implements PatronService{
                 }
             }
         }
-        if(!patronRepository.findById(patron.getId_patron()).isEmpty()){
+        if(patronRepository.findById(patron.getId_patron()).isPresent()){
             throw new DuplicateException("El patron con id "+patron.getId_patron()+" ya esta registrado");
+        }
+        if(!socioRepository.findById(patron.getSocio_dni()).isPresent()){
+            throw new NotFoundException("El socio con dni "+patron.getSocio_dni()+" no esta registrado en el club.");
         }
         if(encontrado){
             throw new DuplicateException("El patron con nombre "+patron.getNombre()+" "+patron.getApellido()+" ya esta registrado");

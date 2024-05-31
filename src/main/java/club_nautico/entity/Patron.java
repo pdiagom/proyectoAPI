@@ -40,4 +40,7 @@ public class Patron {
         this.apellido = apellido;
     }
 
+    public String getSocio_dni() {
+        return socio_dni;
+    }
 }
