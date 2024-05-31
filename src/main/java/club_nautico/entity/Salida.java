@@ -21,9 +21,13 @@ public class Salida {
 
     @Id
     private int id_salida;
+
     private OffsetDateTime fecha_hora = OffsetDateTime.now(ZoneOffset.UTC);
+    @OneToMany
     private String destino;
+    @ManyToMany
     private int id_patron;
+    @ManyToMany
     private String barco_matricula;
 
 
