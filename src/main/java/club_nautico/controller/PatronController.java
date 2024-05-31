@@ -26,7 +26,7 @@ public class PatronController {
     public Patron findPatronById(@PathVariable Integer id_patron) throws NotFoundException {return patronService.findPatronById(id_patron);}
 
     @PostMapping("/savePatron")
-    public Patron savePatron(@RequestBody Patron patron) throws DuplicateException {
+    public Patron savePatron(@RequestBody Patron patron) throws DuplicateException, NotFoundException{
         return patronService.savePatron(patron);
     }
 

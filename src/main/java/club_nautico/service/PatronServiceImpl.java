@@ -16,6 +16,7 @@ import java.util.Objects;
 public class PatronServiceImpl implements PatronService{
     @Autowired
     PatronRepository patronRepository;
+    @Autowired
     SocioRepository socioRepository;
 
     @Override
@@ -30,6 +31,9 @@ public class PatronServiceImpl implements PatronService{
 
     @Override
     public Patron savePatron(Patron patron) throws DuplicateException, NotFoundException {
+        if(!socioRepository.existsById(patron.getSocio_dni())){
+            throw new NotFoundException("El socio con dni "+patron.getSocio_dni()+" no esta registrado en el club.");
+        }
         Iterator<Patron> iter= patronRepository.findAll().iterator();
         boolean encontrado=false;
         while(iter.hasNext()){
@@ -41,9 +45,7 @@ public class PatronServiceImpl implements PatronService{
         if(patronRepository.findById(patron.getId_patron()).isPresent()){
             throw new DuplicateException("El patron con id "+patron.getId_patron()+" ya esta registrado");
         }
-        if(!socioRepository.findById(patron.getSocio_dni()).isPresent()){
-            throw new NotFoundException("El socio con dni "+patron.getSocio_dni()+" no esta registrado en el club.");
-        }
+
         if(encontrado){
             throw new DuplicateException("El patron con nombre "+patron.getNombre()+" "+patron.getApellido()+" ya esta registrado");
         }else {

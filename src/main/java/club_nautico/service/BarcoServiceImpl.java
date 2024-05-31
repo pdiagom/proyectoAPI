@@ -28,7 +28,7 @@ public class BarcoServiceImpl implements BarcoService{
 
     @Override
     public Barco saveBarco(Barco barco) throws DuplicateException {
-        if(!barcoRepository.findById(barco.getMatricula()).isEmpty()){
+        if(barcoRepository.existsById(barco.getMatricula())){
             throw new DuplicateException("El barco con matricula "+barco.getMatricula()+" ya esta registrado");
         }else {
             return barcoRepository.save(barco);

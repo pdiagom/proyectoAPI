@@ -1,6 +1,6 @@
 package club_nautico.service;
 
-import club_nautico.entity.Patron;
+
 import club_nautico.entity.Salida;
 import club_nautico.exception.DuplicateException;
 import club_nautico.exception.NotFoundException;
@@ -11,7 +11,7 @@ import org.springframework.stereotype.Service;
 import java.util.Iterator;
 import java.util.List;
 import java.util.Objects;
-import java.util.Optional;
+
 
 @Service
 public class SalidaServiceImpl implements SalidaService{
@@ -42,7 +42,7 @@ public class SalidaServiceImpl implements SalidaService{
             }
         }
 
-        if (salidaRepository.findById(salida.getId_salida()).isPresent()) {
+        if (salidaRepository.existsById(salida.getId_salida())) {
             throw new DuplicateException("La salida con ID " + salida.getId_salida() + " ya está registrada");
         }
 
