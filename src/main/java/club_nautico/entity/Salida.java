@@ -55,4 +55,7 @@ public class Salida {
         this.barco_matricula = barco_matricula;
     }
 
+    public int getId_salida() {
+        return id_salida;
+    }
 }

@@ -1,11 +1,14 @@
 package club_nautico.service;
 
+import club_nautico.entity.Patron;
 import club_nautico.entity.Salida;
 import club_nautico.exception.DuplicateException;
 import club_nautico.exception.NotFoundException;
 import club_nautico.repository.SalidaRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+
+import java.util.Iterator;
 import java.util.List;
 import java.util.Objects;
 import java.util.Optional;
@@ -25,11 +28,31 @@ public class SalidaServiceImpl implements SalidaService{
 
     @Override
     public Salida saveSalida(Salida salida) throws DuplicateException {
-        if(salidaRepository.findAll().contains(salida)){
-            throw new DuplicateException("La salida con fecha y hora "+salida.getFecha_hora()+" ya esta registrada");
+
+        Iterator<Salida> iter = salidaRepository.findAll().iterator();
+        boolean encontrado = false;
+
+        while (iter.hasNext()) {
+            Salida salidaAux = iter.next();
+            if (salidaAux.getDestino().equals(salida.getDestino()) &&
+                    salidaAux.getFecha_hora().equals(salida.getFecha_hora())) {
+                encontrado = true;
+                break;
+            }
+        }
+
+        if (salidaRepository.findById(salida.getId_salida()).isPresent()) {
+            throw new DuplicateException("La salida con ID " + salida.getId_salida() + " ya está registrada");
+        }
+
+        if (encontrado) {
+            throw new DuplicateException("La salida con destino " + salida.getDestino() + " y fecha/hora " + salida.getFecha_hora() + " ya está registrada");
         }else {
             return salidaRepository.save(salida);
         }
+
+
+
     }
 
     @Override
