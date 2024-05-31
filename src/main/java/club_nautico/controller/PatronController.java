@@ -31,7 +31,7 @@ public class PatronController {
     }
 
     @PutMapping("/updatePatron/{id}")
-    public Patron updatePatron( Integer id, @RequestBody Patron patron) throws NotFoundException {
+    public Patron updatePatron( @PathVariable Integer id, @RequestBody Patron patron) throws NotFoundException {
         return patronService.updatePatron(id, patron);
     }
 

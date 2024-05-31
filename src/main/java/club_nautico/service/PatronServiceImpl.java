@@ -55,8 +55,8 @@ public class PatronServiceImpl implements PatronService{
 
     @Override
     public Patron updatePatron(int id_patron, Patron patron) throws NotFoundException {
-        if(!patronRepository.findAll().contains(patron)){
-            throw new NotFoundException("Patron con id " + patron.getId_patron() + " no encontrado");
+        if(!patronRepository.existsById(id_patron)){
+            throw new NotFoundException("Patron con id " + id_patron + " no encontrado");
         }else {
             Patron patron_db = patronRepository.findById(id_patron).get();
 

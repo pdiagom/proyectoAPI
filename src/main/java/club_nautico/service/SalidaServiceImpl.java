@@ -58,8 +58,8 @@ public class SalidaServiceImpl implements SalidaService{
 
     @Override
     public Salida updateSalida(Integer id, Salida salida) throws NotFoundException {
-        if(!salidaRepository.findAll().contains(salida)){
-            throw new NotFoundException("Salida con fecha y hora " + salida.getFecha_hora() + " no encontrada");
+        if(!salidaRepository.existsById(id)){
+            throw new NotFoundException("Salida con fecha y hora " + salida.getFecha_hora() + " e id "+id+" no encontrada");
         }else {
             Salida salida_db = salidaRepository.findById(id).get();
 

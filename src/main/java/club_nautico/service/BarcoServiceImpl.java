@@ -37,9 +37,8 @@ public class BarcoServiceImpl implements BarcoService{
 
     @Override
     public Barco updateBarco(String matricula, Barco barco) throws NotFoundException {
-        if(!barcoRepository.findAll().contains(barco)){
-
-            throw new NotFoundException("Barco con matricula " + barco.getMatricula() + " no encontrado");
+        if(!barcoRepository.existsById(matricula)){
+            throw new NotFoundException("Barco con matricula " + matricula + " no encontrado");
         }else {
             Barco barco_db = barcoRepository.findById(matricula).get();
             if (Objects.nonNull(barco.getNombre()) && !"".equalsIgnoreCase(barco.getNombre())) {
