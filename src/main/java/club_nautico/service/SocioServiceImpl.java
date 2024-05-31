@@ -41,7 +41,7 @@ public class SocioServiceImpl implements SocioService{
 
     @Override
     public Socio updateSocio(String dni, Socio socio) throws NotFoundException {
-        if(!socioRepository.findAll().contains(socio)){
+        if(!socioRepository.existsById(dni)){
             throw new NotFoundException("Socio con dni " + socio.getSocio_dni() + " no encontrado");
         }else {
             Socio socio_db = socioRepository.findById(dni).get();
