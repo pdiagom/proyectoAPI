@@ -26,6 +26,10 @@ public class SocioController {
         return ResponseEntity.status(HttpStatus.CREATED).body(socioService.findAllSocios());
     }
 
+    @GetMapping("/findAllSocioBarcos/{socio_dni}")
+    public ResponseEntity<?> findAllSocioBarcos(@PathVariable String socio_dni) throws NotFoundException{
+        return ResponseEntity.status(HttpStatus.CREATED).body(socioService.findAllSocioBarcos(socio_dni));
+    }
     @GetMapping("/findSocioById/{socio_dni}")
     public ResponseEntity<?> findSocioById(@PathVariable String socio_dni) throws NotFoundException{
         return ResponseEntity.status(HttpStatus.CREATED).body(socioService.findSocioById(socio_dni));

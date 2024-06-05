@@ -1,6 +1,7 @@
 package club_nautico.service;
 
 
+import club_nautico.entity.Barco;
 import club_nautico.entity.Socio;
 import club_nautico.exception.DuplicateException;
 import club_nautico.exception.NotFoundException;
@@ -9,6 +10,7 @@ import club_nautico.repository.SocioRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
 
@@ -22,6 +24,11 @@ public class SocioServiceImpl implements SocioService{
     public List<Socio> findAllSocios(){
 
         return socioRepository.findAll();
+    }
+
+    @Override
+    public List<Barco> findAllSocioBarcos(String socio_dni) {
+        return socioRepository.findById(socio_dni).get().getListaBarcos();
     }
 
     @Override

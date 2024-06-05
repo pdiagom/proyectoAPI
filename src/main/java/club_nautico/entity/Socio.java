@@ -49,4 +49,8 @@ public class Socio {
     public void setApellido(String apellido) {
         this.apellido = apellido;
     }
+
+    public List<Barco> getListaBarcos() {
+        return listaBarcos;
+    }
 }
