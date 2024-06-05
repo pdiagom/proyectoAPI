@@ -21,14 +21,14 @@ public class SocioController {
 
 
     @GetMapping("/findAllSocios")
-    public List<Socio> findAllSocios(){
+    public ResponseEntity<?> findAllSocios(){
 
-        return socioService.findAllSocios();
+        return ResponseEntity.status(HttpStatus.CREATED).body(socioService.findAllSocios());
     }
 
     @GetMapping("/findSocioById/{socio_dni}")
-    public Socio findSocioById(@PathVariable String socio_dni) throws NotFoundException{
-        return socioService.findSocioById(socio_dni);
+    public ResponseEntity<?> findSocioById(@PathVariable String socio_dni) throws NotFoundException{
+        return ResponseEntity.status(HttpStatus.CREATED).body(socioService.findSocioById(socio_dni));
     }
 
 
@@ -38,13 +38,13 @@ public class SocioController {
     }
 
     @PutMapping("/updateSocios/{dni}")
-    public Socio updateSocio(@PathVariable String dni, @RequestBody Socio socio) throws NotFoundException {
-        return socioService.updateSocio(dni,socio);
+    public ResponseEntity<?> updateSocio(@PathVariable String dni, @RequestBody Socio socio) throws NotFoundException {
+        return ResponseEntity.status(HttpStatus.CREATED).body(socioService.updateSocio(dni, socio));
     }
 
     @DeleteMapping("/deleteSocios/{dni}")
     public String deleteSocio(@PathVariable String dni) throws NotFoundException {
-        socioService.deleteSocio(dni);
+        ResponseEntity.status(HttpStatus.CREATED).body(socioService.deleteSocio(dni));
         return "Socio borrado con éxito";
     }
 }

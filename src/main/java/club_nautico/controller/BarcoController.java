@@ -17,8 +17,8 @@ public class BarcoController {
     BarcoService barcoService;
 
     @GetMapping("/findAllBarcos")
-    public List<Barco> findAllBarcos(){
-        return barcoService.findAllBarcos();
+    public ResponseEntity<?> findAllBarcos(){
+        return ResponseEntity.status(HttpStatus.CREATED).body(barcoService.findAllBarcos());
     }
 
     @GetMapping("/findBarcoById/{matricula}")
