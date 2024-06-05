@@ -12,7 +12,7 @@ import java.util.Optional;
 public interface BarcoService {
     List<Barco> findAllBarcos();
     Barco findBarcoById(String matricula) throws NotFoundException;
-    Barco saveBarco(Barco barco) throws DuplicateException;
+    Barco saveBarco(Barco barco) throws DuplicateException, NotFoundException;
     Barco updateBarco(String matricula, Barco barco)throws NotFoundException;
     String deleteBarco(String matricula) throws NotFoundException;
 }

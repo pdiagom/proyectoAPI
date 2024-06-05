@@ -16,6 +16,7 @@ import java.util.List;
 @NoArgsConstructor  //El constructor sin parametros
 public class Socio {
     @Id
+    @Column(name = "socio_dni")
     private String socio_dni;
     private String nombre;
     private String apellido;

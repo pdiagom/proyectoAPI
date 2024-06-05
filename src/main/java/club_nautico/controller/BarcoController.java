@@ -25,7 +25,7 @@ public class BarcoController {
         return ResponseEntity.status(HttpStatus.CREATED).body(barcoService.findBarcoById(matricula));}
 
     @PostMapping("/saveBarco")
-    public ResponseEntity<?> saveLocal(@RequestBody Barco barco) throws DuplicateException {
+    public ResponseEntity<?> saveBarco(@RequestBody Barco barco) throws DuplicateException, NotFoundException {
         return ResponseEntity.status(HttpStatus.CREATED).body(barcoService.saveBarco(barco));
     }
     @PutMapping("/updateBarco/{matricula}")

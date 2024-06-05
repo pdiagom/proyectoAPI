@@ -4,6 +4,7 @@ import club_nautico.entity.Barco;
 import club_nautico.exception.DuplicateException;
 import club_nautico.exception.NotFoundException;
 import club_nautico.repository.BarcoRepository;
+import club_nautico.repository.SocioRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import java.util.List;
@@ -14,6 +15,8 @@ import java.util.Objects;
 public class BarcoServiceImpl implements BarcoService{
     @Autowired
     BarcoRepository barcoRepository;
+    @Autowired
+    SocioRepository socioRepository;
 
     @Override
     public List<Barco> findAllBarcos(){
@@ -27,8 +30,10 @@ public class BarcoServiceImpl implements BarcoService{
     }
 
     @Override
-    public Barco saveBarco(Barco barco) throws DuplicateException {
-        if(barcoRepository.existsById(barco.getMatricula())){
+    public Barco saveBarco(Barco barco) throws DuplicateException, NotFoundException {
+        if(!socioRepository.existsById(barco.getSocio().getSocio_dni())){
+            throw new NotFoundException("No existe socio con el dni: "+barco.getSocio().getSocio_dni());
+        }else if(barcoRepository.existsById(barco.getMatricula())){
             throw new DuplicateException("El barco con matricula "+barco.getMatricula()+" ya esta registrado");
         }else {
             return barcoRepository.save(barco);
