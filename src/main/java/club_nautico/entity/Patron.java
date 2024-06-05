@@ -1,10 +1,13 @@
 package club_nautico.entity;
 
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
+
+import java.net.SocketImpl;
 
 
 @Entity
@@ -18,7 +21,10 @@ public class Patron {
     private int id_patron;
     private String nombre;
     private String apellido;
-    private String socio_dni;
+    @JsonIgnore
+    @ManyToOne()
+    @JoinColumn(name="socio_dni")
+    private Socio socio;
 
     public int getId_patron() {
         return id_patron;
@@ -41,6 +47,6 @@ public class Patron {
     }
 
     public String getSocio_dni() {
-        return socio_dni;
-    }
+        return socio.getSocio_dni();
+        }
 }

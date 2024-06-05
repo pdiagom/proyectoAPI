@@ -1,11 +1,12 @@
 package club_nautico.entity;
 
-import jakarta.persistence.Entity;
-import jakarta.persistence.Id;
-import jakarta.persistence.Table;
+import com.fasterxml.jackson.annotation.JsonIgnore;
+import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
+
+import java.util.List;
 
 
 @Entity
@@ -18,6 +19,12 @@ public class Socio {
     private String socio_dni;
     private String nombre;
     private String apellido;
+    @JsonIgnore
+    @OneToMany(mappedBy="socio", cascade = CascadeType.ALL,orphanRemoval=true)
+    private List<Barco> listaBarcos;
+    @JsonIgnore
+    @OneToMany(mappedBy = "socio", cascade = CascadeType.ALL, orphanRemoval = true)
+    private List<Patron> listaPatrones;
 
     public String getSocio_dni() {
         return socio_dni;

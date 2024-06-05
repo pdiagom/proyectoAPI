@@ -1,5 +1,6 @@
 package club_nautico.entity;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
@@ -23,8 +24,14 @@ public class Salida {
     private int id_salida;
     private OffsetDateTime fecha_hora = OffsetDateTime.now(ZoneOffset.UTC);
     private String destino;
-    private int id_patron;
-    private String barco_matricula;
+    @JsonIgnore
+    @OneToOne()
+    @JoinColumn(name = "barco_matricula", referencedColumnName = "matricula")
+    private Barco barco;
+    @JsonIgnore
+    @OneToOne()
+    @JoinColumn(name = "id_patron")
+    private Patron patron;
 
 
     public String getDestino() {
@@ -40,19 +47,16 @@ public class Salida {
     }
 
     public int getId_patron() {
-        return id_patron;
+        return patron.getId_patron();
     }
 
-    public void setId_patron(int id_patron) {
-        this.id_patron = id_patron;
-    }
 
     public String getBarco_matricula() {
-        return barco_matricula;
+        return barco.getMatricula();
     }
 
     public void setBarco_matricula(String barco_matricula) {
-        this.barco_matricula = barco_matricula;
+        barco.setMatricula(barco_matricula);
     }
 
     public int getId_salida() {

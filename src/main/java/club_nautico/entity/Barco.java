@@ -1,10 +1,13 @@
 package club_nautico.entity;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
+
+import java.util.List;
 
 @Entity
 @Table(name="barco")
@@ -19,7 +22,13 @@ public class Barco {
     private String nombre;
     private String amarre;
     private double cuota;
-    private String socio_dni;
+    @JsonIgnore
+    @JoinColumn(name="socio_dni")
+    @ManyToOne()
+    private Socio socio;
+    @JsonIgnore
+    @OneToMany(mappedBy = "barco", cascade = CascadeType.ALL, orphanRemoval = true)
+    private List<Salida> listaSalida;
 
     public String getMatricula() {
         return matricula;
@@ -53,12 +62,12 @@ public class Barco {
         this.cuota = cuota;
     }
 
-    public String getSocio_dni() {
-        return socio_dni;
+  //  public String getSocio() {
+        //return socio;
     }
-
-    public void setSocio_dni(String socio_dni) {
-        this.socio_dni = socio_dni;
-    }
-}
+//
+  //  public void setSocio(String socio) {
+    //    this.socio = socio;
+    //}
+//}
 
