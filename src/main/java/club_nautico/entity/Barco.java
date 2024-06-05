@@ -62,12 +62,12 @@ public class Barco {
         this.cuota = cuota;
     }
 
-  //  public String getSocio() {
-        //return socio;
+    public String getSocio() {
+        return socio.getSocio_dni();
     }
-//
-  //  public void setSocio(String socio) {
-    //    this.socio = socio;
-    //}
-//}
+
+   public void setSocio(String socio) {
+       // this.so
+    }
+}
 
