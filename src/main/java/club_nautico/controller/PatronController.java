@@ -6,6 +6,8 @@ import club_nautico.exception.DuplicateException;
 import club_nautico.exception.NotFoundException;
 import club_nautico.service.PatronService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -26,8 +28,8 @@ public class PatronController {
     public Patron findPatronById(@PathVariable Integer id_patron) throws NotFoundException {return patronService.findPatronById(id_patron);}
 
     @PostMapping("/savePatron")
-    public Patron savePatron(@RequestBody Patron patron) throws DuplicateException, NotFoundException{
-        return patronService.savePatron(patron);
+    public ResponseEntity<?> savePatron(@RequestBody Patron patron) throws DuplicateException, NotFoundException{
+        return ResponseEntity.status(HttpStatus.CREATED).body(patronService.savePatron(patron));
     }
 
     @PutMapping("/updatePatron/{id}")

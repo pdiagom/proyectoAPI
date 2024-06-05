@@ -6,6 +6,8 @@ import club_nautico.exception.DuplicateException;
 import club_nautico.exception.NotFoundException;
 import club_nautico.service.SocioService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -31,8 +33,8 @@ public class SocioController {
 
 
     @PostMapping("/saveSocios")
-    public Socio saveSocio(@RequestBody Socio socio) throws DuplicateException {
-        return socioService.saveSocio(socio);
+    public ResponseEntity<?> saveSocio(@RequestBody Socio socio) throws DuplicateException {
+        return ResponseEntity.status(HttpStatus.CREATED).body(socioService.saveSocio(socio));
     }
 
     @PutMapping("/updateSocios/{dni}")
