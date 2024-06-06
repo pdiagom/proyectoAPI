@@ -1,7 +1,6 @@
-package club_nautico.exception.dto;
+package club_nautico.exception.error;
 
 
-import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 import org.springframework.http.HttpStatus;

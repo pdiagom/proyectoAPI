@@ -1,6 +1,6 @@
 package club_nautico.exception;
 
-import club_nautico.exception.dto.ErrorMessage;
+import club_nautico.exception.error.ErrorMessage;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.ControllerAdvice;
