@@ -8,7 +8,7 @@ import club_nautico.repository.SalidaRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import java.util.Iterator;
+
 import java.util.List;
 import java.util.Objects;
 
@@ -28,32 +28,20 @@ public class SalidaServiceImpl implements SalidaService{
 
     @Override
     public Salida saveSalida(Salida salida) throws DuplicateException {
-
-        Iterator<Salida> iter = salidaRepository.findAll().iterator();
-        boolean encontrado = false;
-
-        while (iter.hasNext()) {
-            Salida salidaAux = iter.next();
-            if (salidaAux.getDestino().equals(salida.getDestino()) &&
-                    salidaAux.getFecha_hora().equals(salida.getFecha_hora()) &&
-                    salidaAux.getBarco_matricula().equals(salida.getBarco_matricula())) {
-                encontrado = true;
-                break;
+        boolean encontrado = salidaRepository.findAll().stream().anyMatch(s -> {
+            if (Objects.nonNull(s.getBarco()) && Objects.nonNull(salida.getBarco())) {
+                return s.getDestino().equals(salida.getDestino()) &&
+                        s.getFecha_hora().equals(salida.getFecha_hora()) &&
+                        s.getBarco().getMatricula().equals(salida.getBarco().getMatricula());
+            } else {
+                return false; // Si uno de los barcos es nulo, considerarlos distintos
             }
-        }
-
-        if (salidaRepository.existsById(salida.getId_salida())) {
-            throw new DuplicateException("La salida con ID " + salida.getId_salida() + " ya está registrada");
-        }
+        });
 
         if (encontrado) {
             throw new DuplicateException("La salida con destino " + salida.getDestino() + " y fecha/hora " + salida.getFecha_hora() + " ya está registrada");
-        }else {
-            return salidaRepository.save(salida);
         }
-
-
-
+            return salidaRepository.save(salida);
     }
 
     @Override
@@ -67,8 +55,8 @@ public class SalidaServiceImpl implements SalidaService{
                 salida_db.setDestino(salida.getDestino());
             }
 
-            if (Objects.nonNull(salida.getBarco_matricula()) && !"".equalsIgnoreCase(salida.getBarco_matricula())) {
-                salida_db.setBarco_matricula(salida.getBarco_matricula());
+            if (Objects.nonNull(salida.getBarco()) && Objects.nonNull(salida.getBarco().getMatricula()) && !"".equalsIgnoreCase(salida.getBarco().getMatricula())) {
+                salida_db.setBarco_matricula(salida.getBarco().getMatricula());
             }
 
             return salidaRepository.save(salida_db);

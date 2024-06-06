@@ -27,8 +27,9 @@ public class SocioServiceImpl implements SocioService{
     }
 
     @Override
-    public List<Barco> findAllSocioBarcos(String socio_dni) {
-        return socioRepository.findById(socio_dni).get().getListaBarcos();
+    public List<Barco> findAllSocioBarcos(String socio_dni) throws NotFoundException {
+       Socio socio= socioRepository.findById(socio_dni).orElseThrow(()-> new NotFoundException("Socio no encontrado con DNI: " + socio_dni));
+        return socio.getListaBarcos();
     }
 
     @Override

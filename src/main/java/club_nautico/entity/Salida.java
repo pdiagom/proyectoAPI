@@ -21,14 +21,13 @@ import java.time.ZoneOffset;
 public class Salida {
 
     @Id
+    @GeneratedValue(strategy = GenerationType.AUTO)
     private int id_salida;
     private OffsetDateTime fecha_hora = OffsetDateTime.now(ZoneOffset.UTC);
     private String destino;
-    @JsonIgnore
     @OneToOne()
     @JoinColumn(name = "barco_matricula", referencedColumnName = "matricula")
     private Barco barco;
-    @JsonIgnore
     @OneToOne()
     @JoinColumn(name = "id_patron")
     private Patron patron;
@@ -46,17 +45,16 @@ public class Salida {
         return fecha_hora;
     }
 
-    public int getId_patron() {
-        return patron.getId_patron();
+    public Patron getPatron() {
+        return patron;
     }
 
 
-    public String getBarco_matricula() {
-        return barco.getMatricula();
+    public Barco getBarco() {
+        return barco;
     }
-
-    public void setBarco_matricula(String barco_matricula) {
-        barco.setMatricula(barco_matricula);
+    public void setBarco_matricula(String matricula){
+        barco.setMatricula(matricula);
     }
 
     public int getId_salida() {

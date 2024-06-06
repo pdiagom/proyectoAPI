@@ -12,7 +12,7 @@ import java.util.List;
 @Service
 public interface SocioService {
     List<Socio> findAllSocios();
-    List<Barco> findAllSocioBarcos(String socio_dni);
+    List<Barco> findAllSocioBarcos(String socio_dni) throws NotFoundException;
     Socio findSocioById(String socio_dni) throws NotFoundException;
     Socio saveSocio(Socio socio) throws DuplicateException;
     Socio updateSocio(String dni, Socio socio)throws NotFoundException;
