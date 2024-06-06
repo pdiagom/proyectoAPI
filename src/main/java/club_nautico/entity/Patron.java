@@ -7,7 +7,6 @@ import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
-import java.net.SocketImpl;
 
 
 @Entity
@@ -18,12 +17,12 @@ import java.net.SocketImpl;
 public class Patron {
 
     @Id
+    @GeneratedValue(strategy = GenerationType.AUTO)
     private int id_patron;
     private String nombre;
     private String apellido;
-    @JsonIgnore
+    @JoinColumn(name="socio_dni",referencedColumnName = "socio_dni")
     @ManyToOne()
-    @JoinColumn(name="socio_dni")
     private Socio socio;
 
     public int getId_patron() {
@@ -46,7 +45,7 @@ public class Patron {
         this.apellido = apellido;
     }
 
-    public String getSocio_dni() {
-        return socio.getSocio_dni();
+    public Socio getSocio() {
+        return socio;
         }
 }

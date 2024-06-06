@@ -14,8 +14,10 @@ import java.util.Objects;
 
 @Service
 public class PatronServiceImpl implements PatronService{
+
     @Autowired
     PatronRepository patronRepository;
+
     @Autowired
     SocioRepository socioRepository;
 
@@ -31,27 +33,18 @@ public class PatronServiceImpl implements PatronService{
 
     @Override
     public Patron savePatron(Patron patron) throws DuplicateException, NotFoundException {
-        if(!socioRepository.existsById(patron.getSocio_dni())){
-            throw new NotFoundException("El socio con dni "+patron.getSocio_dni()+" no esta registrado en el club.");
+        if(!socioRepository.existsById(patron.getSocio().getSocio_dni())){
+            throw new NotFoundException("El socio con dni "+patron.getSocio().getSocio_dni()+" no esta registrado en el club.");
         }
-        Iterator<Patron> iter= patronRepository.findAll().iterator();
-        boolean encontrado=false;
-        while(iter.hasNext()){
-            Patron patron_aux= iter.next();
-            if(patron_aux.getNombre().equals(patron.getNombre())&&patron_aux.getApellido().equals(patron.getApellido())){
-                    encontrado = true;
-            }
-        }
-        if(patronRepository.findById(patron.getId_patron()).isPresent()){
-            throw new DuplicateException("El patron con id "+patron.getId_patron()+" ya esta registrado");
-        }
+        boolean encontrado = patronRepository.findAll().stream()
+                .anyMatch(p -> p.getNombre().equals(patron.getNombre()) && p.getApellido().equals(patron.getApellido()));
 
         if(encontrado){
             throw new DuplicateException("El patron con nombre "+patron.getNombre()+" "+patron.getApellido()+" ya esta registrado");
-        }else {
-            return patronRepository.save(patron);
         }
-    }
+
+        return patronRepository.save(patron);
+        }
 
     @Override
     public Patron updatePatron(int id_patron, Patron patron) throws NotFoundException {
