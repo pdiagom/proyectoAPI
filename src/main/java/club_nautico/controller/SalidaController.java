@@ -29,7 +29,7 @@ public class SalidaController {
         return ResponseEntity.status(HttpStatus.OK).body(salidaService.findSalidaById(id_salida));}
 
     @PostMapping("/saveSalida")
-    public ResponseEntity<Salida> saveSalida(@RequestBody Salida salida) throws DuplicateException {
+    public ResponseEntity<Salida> saveSalida(@RequestBody Salida salida) throws DuplicateException, NotFoundException {
         return ResponseEntity.status(HttpStatus.CREATED).body(salidaService.saveSalida(salida));
     }
 

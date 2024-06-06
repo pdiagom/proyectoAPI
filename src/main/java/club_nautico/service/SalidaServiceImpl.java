@@ -4,6 +4,7 @@ package club_nautico.service;
 import club_nautico.entity.Salida;
 import club_nautico.exception.DuplicateException;
 import club_nautico.exception.NotFoundException;
+import club_nautico.repository.BarcoRepository;
 import club_nautico.repository.SalidaRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -18,6 +19,9 @@ public class SalidaServiceImpl implements SalidaService{
     @Autowired
     SalidaRepository salidaRepository;
 
+    @Autowired
+    BarcoRepository barcoRepository;
+
     @Override
     public List<Salida> findAllSalidas() {return salidaRepository.findAll();}
 
@@ -27,19 +31,20 @@ public class SalidaServiceImpl implements SalidaService{
     }
 
     @Override
-    public Salida saveSalida(Salida salida) throws DuplicateException {
+    public Salida saveSalida(Salida salida) throws DuplicateException, NotFoundException {
         boolean encontrado = salidaRepository.findAll().stream().anyMatch(s -> {
             if (Objects.nonNull(s.getBarco()) && Objects.nonNull(salida.getBarco())) {
-                return s.getDestino().equals(salida.getDestino()) &&
-                        s.getFecha_hora().equals(salida.getFecha_hora()) &&
+                return s.getFecha_hora().equals(salida.getFecha_hora()) &&
                         s.getBarco().getMatricula().equals(salida.getBarco().getMatricula());
             } else {
                 return false; // Si uno de los barcos es nulo, considerarlos distintos
             }
         });
-
+        if(!barcoRepository.existsById(salida.getBarco().getMatricula())){
+            throw new NotFoundException("No existe barco con matricula: "+salida.getBarco().getMatricula());
+        }
         if (encontrado) {
-            throw new DuplicateException("La salida con destino " + salida.getDestino() + " y fecha/hora " + salida.getFecha_hora() + " ya está registrada");
+            throw new DuplicateException("La salida del barco " + salida.getBarco().getMatricula() + " y fecha/hora " + salida.getFecha_hora() + " ya está registrada");
         }
             return salidaRepository.save(salida);
     }

@@ -6,7 +6,6 @@ import club_nautico.exception.NotFoundException;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
-import java.util.Optional;
 
 @Service
 public interface PatronService {
