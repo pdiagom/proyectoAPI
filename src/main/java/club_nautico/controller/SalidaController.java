@@ -19,12 +19,12 @@ public class SalidaController {
 
     @GetMapping("/findAllSalidas")
     public ResponseEntity<?> findAllSalidas(){
-        return ResponseEntity.status(HttpStatus.CREATED).body(salidaService.findAllSalidas());
+        return ResponseEntity.status(HttpStatus.OK).body(salidaService.findAllSalidas());
     }
 
     @GetMapping("/findSalidaById/{id_salida}")
     public ResponseEntity<?> findSalidaById(@PathVariable Integer id_salida) throws NotFoundException {
-        return ResponseEntity.status(HttpStatus.CREATED).body(salidaService.findSalidaById(id_salida));}
+        return ResponseEntity.status(HttpStatus.OK).body(salidaService.findSalidaById(id_salida));}
 
     @PostMapping("/saveSalida")
     public ResponseEntity<?> saveSalida(@RequestBody Salida salida) throws DuplicateException {
@@ -33,12 +33,12 @@ public class SalidaController {
 
     @PutMapping("/updateSalida/{id}")
     public ResponseEntity<?> updateSalida(@PathVariable Integer id,@RequestBody Salida salida) throws NotFoundException {
-        return ResponseEntity.status(HttpStatus.CREATED).body(salidaService.updateSalida(id, salida));
+        return ResponseEntity.status(HttpStatus.OK).body(salidaService.updateSalida(id, salida));
     }
 
     @DeleteMapping("/deleteSalida/{id}")
     public String deleteSalida(@PathVariable Integer id) throws NotFoundException {
-        ResponseEntity.status(HttpStatus.CREATED).body(salidaService.deleteSalida(id));
+        ResponseEntity.status(HttpStatus.NO_CONTENT).body(salidaService.deleteSalida(id));
         return "La salida se ha borrado correctamente";
     }
 

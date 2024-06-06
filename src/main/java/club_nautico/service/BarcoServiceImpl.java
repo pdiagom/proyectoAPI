@@ -13,8 +13,10 @@ import java.util.Objects;
 
 @Service
 public class BarcoServiceImpl implements BarcoService{
+
     @Autowired
     BarcoRepository barcoRepository;
+
     @Autowired
     SocioRepository socioRepository;
 

@@ -21,10 +21,10 @@ public class Barco {
     private String amarre;
     private double cuota;
     @JoinColumn(name="socio_dni", referencedColumnName = "socio_dni")
-    @ManyToOne(fetch = FetchType.LAZY)
+    @ManyToOne()
     private Socio socio;
     @JsonIgnore
-    @OneToMany(mappedBy = "barco", cascade = CascadeType.ALL,fetch = FetchType.LAZY, orphanRemoval = true)
+    @OneToMany(mappedBy = "barco", cascade = CascadeType.ALL, orphanRemoval = true)
     private List<Salida> listaSalida;
 
     public String getMatricula() {
