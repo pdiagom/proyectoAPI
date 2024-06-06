@@ -68,7 +68,6 @@ public class BarcoServiceImpl implements BarcoService{
     public String deleteBarco(String matricula) throws NotFoundException {
         Barco barco = barcoRepository.findById(matricula)
                 .orElseThrow(() -> new NotFoundException("Barco no encontrado con matrícula: " + matricula));
-
         barcoRepository.deleteById(matricula);
         return "Barco borrado correctamente";
     }
