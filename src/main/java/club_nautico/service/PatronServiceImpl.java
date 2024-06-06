@@ -65,10 +65,10 @@ public class PatronServiceImpl implements PatronService{
     }
 
     @Override
-    public String deletePatron(int id) throws NotFoundException {
+    public Patron deletePatron(int id) throws NotFoundException {
         Patron patron = patronRepository.findById(id)
                 .orElseThrow(() -> new NotFoundException("Patron no encontrado con ID: " + id));
         patronRepository.deleteById(id);
-        return "Patron borrado correctamente";
+        return patron;
     }
 }

@@ -70,11 +70,11 @@ public class SocioServiceImpl implements SocioService{
     }
 
     @Override
-    public String deleteSocio(String socio_dni) throws NotFoundException {
+    public Socio deleteSocio(String socio_dni) throws NotFoundException {
         Socio socio = socioRepository.findById(socio_dni)
                 .orElseThrow(() -> new NotFoundException("Socio no encontrado con DNI: " + socio_dni));
 
         socioRepository.deleteById(socio_dni);
-        return "Socio borrado correctamente";
+        return socio;
     }
 }

@@ -14,5 +14,5 @@ public interface BarcoService {
     Barco findBarcoById(String matricula) throws NotFoundException;
     Barco saveBarco(Barco barco) throws DuplicateException, NotFoundException;
     Barco updateBarco(String matricula, Barco barco)throws NotFoundException;
-    String deleteBarco(String matricula) throws NotFoundException;
+    Barco deleteBarco(String matricula) throws NotFoundException;
 }

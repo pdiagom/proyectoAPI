@@ -10,6 +10,8 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.List;
+
 
 @RestController
 
@@ -18,28 +20,27 @@ public class SalidaController {
     SalidaService salidaService;
 
     @GetMapping("/findAllSalidas")
-    public ResponseEntity<?> findAllSalidas(){
+    public ResponseEntity<List<Salida>> findAllSalidas(){
         return ResponseEntity.status(HttpStatus.OK).body(salidaService.findAllSalidas());
     }
 
     @GetMapping("/findSalidaById/{id_salida}")
-    public ResponseEntity<?> findSalidaById(@PathVariable Integer id_salida) throws NotFoundException {
+    public ResponseEntity<Salida> findSalidaById(@PathVariable Integer id_salida) throws NotFoundException {
         return ResponseEntity.status(HttpStatus.OK).body(salidaService.findSalidaById(id_salida));}
 
     @PostMapping("/saveSalida")
-    public ResponseEntity<?> saveSalida(@RequestBody Salida salida) throws DuplicateException {
+    public ResponseEntity<Salida> saveSalida(@RequestBody Salida salida) throws DuplicateException {
         return ResponseEntity.status(HttpStatus.CREATED).body(salidaService.saveSalida(salida));
     }
 
     @PutMapping("/updateSalida/{id}")
-    public ResponseEntity<?> updateSalida(@PathVariable Integer id,@RequestBody Salida salida) throws NotFoundException {
+    public ResponseEntity<Salida> updateSalida(@PathVariable Integer id,@RequestBody Salida salida) throws NotFoundException {
         return ResponseEntity.status(HttpStatus.OK).body(salidaService.updateSalida(id, salida));
     }
 
     @DeleteMapping("/deleteSalida/{id}")
-    public String deleteSalida(@PathVariable Integer id) throws NotFoundException {
-        ResponseEntity.status(HttpStatus.NO_CONTENT).body(salidaService.deleteSalida(id));
-        return "La salida se ha borrado correctamente";
+    public ResponseEntity<Salida> deleteSalida(@PathVariable Integer id) throws NotFoundException {
+        return ResponseEntity.status(HttpStatus.OK).body(salidaService.deleteSalida(id));
     }
 
 }

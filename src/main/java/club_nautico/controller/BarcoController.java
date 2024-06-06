@@ -9,6 +9,8 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.List;
+
 
 @RestController
 public class BarcoController {
@@ -16,26 +18,25 @@ public class BarcoController {
     BarcoService barcoService;
 
     @GetMapping("/findAllBarcos")
-    public ResponseEntity<?> findAllBarcos(){
+    public ResponseEntity<List<Barco>> findAllBarcos(){
         return ResponseEntity.status(HttpStatus.OK).body(barcoService.findAllBarcos());
     }
 
     @GetMapping("/findBarcoById/{matricula}")
-    public ResponseEntity<?> findBarcoById(@PathVariable String matricula) throws NotFoundException {
+    public ResponseEntity<Barco> findBarcoById(@PathVariable String matricula) throws NotFoundException {
         return ResponseEntity.status(HttpStatus.OK).body(barcoService.findBarcoById(matricula));}
 
     @PostMapping("/saveBarco")
-    public ResponseEntity<?> saveBarco(@RequestBody Barco barco) throws DuplicateException, NotFoundException {
+    public ResponseEntity<Barco> saveBarco(@RequestBody Barco barco) throws DuplicateException, NotFoundException {
         return ResponseEntity.status(HttpStatus.CREATED).body(barcoService.saveBarco(barco));
     }
     @PutMapping("/updateBarco/{matricula}")
-    public ResponseEntity<?> updateBarco(@PathVariable("matricula") String matricula, @RequestBody Barco barco) throws NotFoundException {
+    public ResponseEntity<Barco> updateBarco(@PathVariable("matricula") String matricula, @RequestBody Barco barco) throws NotFoundException {
         return ResponseEntity.status(HttpStatus.OK).body(barcoService.updateBarco(matricula,barco));
     }
 
     @DeleteMapping("/deleteBarco/{matricula}")
-    public String deleteBarco(@PathVariable("matricula")String matricula ) throws NotFoundException {
-        ResponseEntity.status(HttpStatus.NO_CONTENT).body(barcoService.deleteBarco(matricula));
-        return "El barco se ha eliminado correctamente";
+    public ResponseEntity<Barco> deleteBarco(@PathVariable("matricula")String matricula ) throws NotFoundException {
+        return ResponseEntity.status(HttpStatus.OK).body(barcoService.deleteBarco(matricula));
     }
 }
