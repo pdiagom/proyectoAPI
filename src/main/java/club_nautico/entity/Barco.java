@@ -3,7 +3,6 @@ package club_nautico.entity;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
-import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
@@ -14,7 +13,6 @@ import java.util.List;
 @Data               //Todos los getters y setters
 @AllArgsConstructor //Todos los constructores de salida
 @NoArgsConstructor  //El constructor sin parametros
-@Builder
 public class Barco {
 
     @Id
@@ -22,8 +20,7 @@ public class Barco {
     private String nombre;
     private String amarre;
     private double cuota;
-    @JsonIgnore
-    @JoinColumn(name="socio_dni")
+    @JoinColumn(name="socio_dni", referencedColumnName = "socio_dni")
     @ManyToOne()
     private Socio socio;
     @JsonIgnore
@@ -62,12 +59,8 @@ public class Barco {
         this.cuota = cuota;
     }
 
-    public String getSocio() {
-        return socio.getSocio_dni();
+    public Socio getSocio() {
+        return socio;
     }
 
-   public void setSocio(String socio) {
-       // this.so
-    }
 }
-

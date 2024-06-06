@@ -23,12 +23,16 @@ public class SocioController {
     @GetMapping("/findAllSocios")
     public ResponseEntity<?> findAllSocios(){
 
-        return ResponseEntity.status(HttpStatus.CREATED).body(socioService.findAllSocios());
+        return ResponseEntity.status(HttpStatus.OK).body(socioService.findAllSocios());
     }
 
+    @GetMapping("/findAllSocioBarcos/{socio_dni}")
+    public ResponseEntity<?> findAllSocioBarcos(@PathVariable String socio_dni) throws NotFoundException{
+        return ResponseEntity.status(HttpStatus.OK).body(socioService.findAllSocioBarcos(socio_dni));
+    }
     @GetMapping("/findSocioById/{socio_dni}")
     public ResponseEntity<?> findSocioById(@PathVariable String socio_dni) throws NotFoundException{
-        return ResponseEntity.status(HttpStatus.CREATED).body(socioService.findSocioById(socio_dni));
+        return ResponseEntity.status(HttpStatus.OK).body(socioService.findSocioById(socio_dni));
     }
 
 
@@ -39,12 +43,12 @@ public class SocioController {
 
     @PutMapping("/updateSocios/{dni}")
     public ResponseEntity<?> updateSocio(@PathVariable String dni, @RequestBody Socio socio) throws NotFoundException {
-        return ResponseEntity.status(HttpStatus.CREATED).body(socioService.updateSocio(dni, socio));
+        return ResponseEntity.status(HttpStatus.OK).body(socioService.updateSocio(dni, socio));
     }
 
     @DeleteMapping("/deleteSocios/{dni}")
     public String deleteSocio(@PathVariable String dni) throws NotFoundException {
-        ResponseEntity.status(HttpStatus.CREATED).body(socioService.deleteSocio(dni));
+        ResponseEntity.status(HttpStatus.NO_CONTENT).body(socioService.deleteSocio(dni));
         return "Socio borrado con éxito";
     }
 }

@@ -21,12 +21,12 @@ public class PatronController {
 
     @GetMapping("/findAllPatrones")
     public ResponseEntity<?> findAllPatrones() {
-        return ResponseEntity.status(HttpStatus.CREATED).body(patronService.findAllPatrones());
+        return ResponseEntity.status(HttpStatus.OK).body(patronService.findAllPatrones());
     }
 
     @GetMapping("/findPatronById/{id_patron}")
     public ResponseEntity<?> findPatronById(@PathVariable Integer id_patron) throws NotFoundException {
-        return ResponseEntity.status(HttpStatus.CREATED).body(patronService.findPatronById(id_patron));}
+        return ResponseEntity.status(HttpStatus.OK).body(patronService.findPatronById(id_patron));}
 
     @PostMapping("/savePatron")
     public ResponseEntity<?> savePatron(@RequestBody Patron patron) throws DuplicateException, NotFoundException{
@@ -35,12 +35,12 @@ public class PatronController {
 
     @PutMapping("/updatePatron/{id}")
     public ResponseEntity<?> updatePatron( @PathVariable Integer id, @RequestBody Patron patron) throws NotFoundException {
-        return ResponseEntity.status(HttpStatus.CREATED).body(patronService.updatePatron(id,patron));
+        return ResponseEntity.status(HttpStatus.OK).body(patronService.updatePatron(id,patron));
     }
 
     @DeleteMapping("/deletePatron/{id}")
     public String deletePatron(@PathVariable Integer id) throws NotFoundException {
-        ResponseEntity.status(HttpStatus.CREATED).body(patronService.deletePatron(id));
+        ResponseEntity.status(HttpStatus.NO_CONTENT).body(patronService.deletePatron(id));
         return "El patron se ha borrado correctamente";
     }
 }

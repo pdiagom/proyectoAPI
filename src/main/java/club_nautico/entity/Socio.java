@@ -16,6 +16,7 @@ import java.util.List;
 @NoArgsConstructor  //El constructor sin parametros
 public class Socio {
     @Id
+    @Column(name = "socio_dni")
     private String socio_dni;
     private String nombre;
     private String apellido;
@@ -48,5 +49,9 @@ public class Socio {
 
     public void setApellido(String apellido) {
         this.apellido = apellido;
+    }
+
+    public List<Barco> getListaBarcos() {
+        return listaBarcos;
     }
 }

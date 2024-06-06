@@ -17,25 +17,25 @@ public class BarcoController {
 
     @GetMapping("/findAllBarcos")
     public ResponseEntity<?> findAllBarcos(){
-        return ResponseEntity.status(HttpStatus.CREATED).body(barcoService.findAllBarcos());
+        return ResponseEntity.status(HttpStatus.OK).body(barcoService.findAllBarcos());
     }
 
     @GetMapping("/findBarcoById/{matricula}")
     public ResponseEntity<?> findBarcoById(@PathVariable String matricula) throws NotFoundException {
-        return ResponseEntity.status(HttpStatus.CREATED).body(barcoService.findBarcoById(matricula));}
+        return ResponseEntity.status(HttpStatus.OK).body(barcoService.findBarcoById(matricula));}
 
     @PostMapping("/saveBarco")
-    public ResponseEntity<?> saveLocal(@RequestBody Barco barco) throws DuplicateException {
+    public ResponseEntity<?> saveBarco(@RequestBody Barco barco) throws DuplicateException, NotFoundException {
         return ResponseEntity.status(HttpStatus.CREATED).body(barcoService.saveBarco(barco));
     }
     @PutMapping("/updateBarco/{matricula}")
     public ResponseEntity<?> updateBarco(@PathVariable("matricula") String matricula, @RequestBody Barco barco) throws NotFoundException {
-        return ResponseEntity.status(HttpStatus.CREATED).body(barcoService.updateBarco(matricula,barco));
+        return ResponseEntity.status(HttpStatus.OK).body(barcoService.updateBarco(matricula,barco));
     }
 
     @DeleteMapping("/deleteBarco/{matricula}")
     public String deleteBarco(@PathVariable("matricula")String matricula ) throws NotFoundException {
-        ResponseEntity.status(HttpStatus.CREATED).body(barcoService.deleteBarco(matricula));
+        ResponseEntity.status(HttpStatus.NO_CONTENT).body(barcoService.deleteBarco(matricula));
         return "El barco se ha eliminado correctamente";
     }
 }
