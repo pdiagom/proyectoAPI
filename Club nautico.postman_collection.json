@@ -1,0 +1,943 @@
+{
+	"info": {
+		"_postman_id": "5fed7e42-d87c-4813-99f1-33671495ab5d",
+		"name": "Club nautico",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "35337466",
+		"_collection_link": "https://proyectoapi-4294.postman.co/workspace/ProyectoApi-Workspace~297d3f5f-4708-49f6-8105-dbc485a0acac/collection/35334738-5fed7e42-d87c-4813-99f1-33671495ab5d?action=share&source=collection_link&creator=35337466"
+	},
+	"item": [
+		{
+			"name": "Socio",
+			"item": [
+				{
+					"name": "findAllSocios",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8085/findAllSocios",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8085",
+							"path": [
+								"findAllSocios"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "saveSocios",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"socio_dni\": \"24567547R\",\r\n    \"nombre\": \"Lucia\",\r\n    \"apellido\": \"Gomez\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8085/saveSocios",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8085",
+							"path": [
+								"saveSocios"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "saveSocios (No funcional)",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "    {\r\n        \"socio_dni\": \"12345678A\",\r\n        \"nombre\": \"Juan\",\r\n        \"apellido\": \"Pérez\"\r\n    }",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8085/saveSocios",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8085",
+							"path": [
+								"saveSocios"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "updateSocios",
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"nombre\": \"Lucia\",\r\n    \"apellido\": \"Lopez\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8085/updateSocios/24567547R",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8085",
+							"path": [
+								"updateSocios",
+								"24567547R"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "updateSocios (No funcional)",
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n        \"nombre\": \"Jorge\",\r\n        \"apellido\": \"Galan\"\r\n    }",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8085/updateSocios/87654321",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8085",
+							"path": [
+								"updateSocios",
+								"87654321"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "deleteSocios",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8085/deleteSocios/24567547R",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8085",
+							"path": [
+								"deleteSocios",
+								"24567547R"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "deleteSocios (No funcional)",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8085/deleteSocios/24567547",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8085",
+							"path": [
+								"deleteSocios",
+								"24567547"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "findSocioById",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8085/findSocioById/12345678A",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8085",
+							"path": [
+								"findSocioById",
+								"12345678A"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "findSocioById (No funcional)",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8085/findSocioById/45678901",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8085",
+							"path": [
+								"findSocioById",
+								"45678901"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "findAllSocioBarcos",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8085/findAllSocioBarcos/12345678A",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8085",
+							"path": [
+								"findAllSocioBarcos",
+								"12345678A"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "findAllSocioBarcos (No funcional)",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8085/findAllSocioBarcos/12345678",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8085",
+							"path": [
+								"findAllSocioBarcos",
+								"12345678"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Barco",
+			"item": [
+				{
+					"name": "findAllBarcos",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8085/findAllBarcos",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8085",
+							"path": [
+								"findAllBarcos"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "saveBarco",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"matricula\": \"666EVIL\",\r\n    \"nombre\": \"Manolo\",\r\n    \"amarre\": \"A09\",\r\n    \"cuota\": 300.0,\r\n    \"socio\": {\r\n        \"socio_dni\":\"12345678A\",\r\n        \"nombre\":\"Juan\",\r\n        \"apellido\":\"Pérez\"\r\n        }\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8085/saveBarco",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8085",
+							"path": [
+								"saveBarco"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "saveBarco (No funcional)",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"matricula\": \"666DEMONIO\",\r\n    \"nombre\": \"Manolo\",\r\n    \"amarre\": \"A09\",\r\n    \"cuota\": 300.0,\r\n    \"socio\": {\r\n        \"socio_dni\":\"12345678JEJE\",\r\n        \"nombre\":\"Juan\",\r\n        \"apellido\":\"Pérez\"\r\n        }\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8085/saveBarco",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8085",
+							"path": [
+								"saveBarco"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "updateBarco",
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"nombre\": \"Baal\",\r\n    \"amarre\": \"D056\",\r\n    \"cuota\": 666.6\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8085/updateBarco/666EVIL",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8085",
+							"path": [
+								"updateBarco",
+								"666EVIL"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "updateBarco (No funcional)",
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"nombre\": \"David\",\r\n    \"amarre\": \"A01\",\r\n    \"cuota\": 200.0,\r\n    \"socio_dni\": \"12345678A\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8085/updateBarco/123AB",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8085",
+							"path": [
+								"updateBarco",
+								"123AB"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "deleteBarco",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8085/deleteBarco/666EVIL",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8085",
+							"path": [
+								"deleteBarco",
+								"666EVIL"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "deleteBarco (No funcional)",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8085/deleteBarco/666",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8085",
+							"path": [
+								"deleteBarco",
+								"666"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "findBarcoById",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8085/findBarcoById/123ABC",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8085",
+							"path": [
+								"findBarcoById",
+								"123ABC"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "find BarcosById (No funcional)",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8085/findBarcoById/0",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8085",
+							"path": [
+								"findBarcoById",
+								"0"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Patron",
+			"item": [
+				{
+					"name": "findAllPatrones",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8085/findAllPatrones",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8085",
+							"path": [
+								"findAllPatrones"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "savePatron",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"nombre\": \"Juan\",\r\n    \"apellido\": \"martin\",\r\n    \"socio\": {\r\n        \"socio_dni\": \"12345678A\",\r\n        \"nombre\": \"Juan\",\r\n        \"apellido\": \"Pérez\"\r\n    }\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8085/savePatron",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8085",
+							"path": [
+								"savePatron"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "savePatron(No funcional)",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"nombre\": \"Lucia\",\r\n    \"apellido\": \"Pérez\",\r\n    \"socio\":{\r\n        \"socio_dni\":\"1234568A\",\r\n            \"nombre\":\"Juan\",\r\n            \"apellido\":\"Pérez\"\r\n    }\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8085/savePatron",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8085",
+							"path": [
+								"savePatron"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "updatePatron",
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"nombre\": \"Juan\",\r\n    \"apellido\": \"Holga\",\r\n    \"socio_dni\": \"12345678A\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8085/updatePatron/1",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8085",
+							"path": [
+								"updatePatron",
+								"1"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "updatePatron (No funcional)",
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"nombre\": \"Juan\",\r\n    \"apellido\": \"Holga\",\r\n    \"socio_dni\": \"12345678A\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8085/updatePatron/0",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8085",
+							"path": [
+								"updatePatron",
+								"0"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "deletePatron",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8085/deletePatron/2",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8085",
+							"path": [
+								"deletePatron",
+								"2"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "deletePatron (No funcional)",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8085/deletePatron/0",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8085",
+							"path": [
+								"deletePatron",
+								"0"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "findPatronById",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8085/findPatronById/1",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8085",
+							"path": [
+								"findPatronById",
+								"1"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "findPatronById(No funcional)",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8085/findPatronById/0",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8085",
+							"path": [
+								"findPatronById",
+								"0"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "findAllPatronesSocio (En construccion)",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8085/findAllPatronesSocio/12345678A",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8085",
+							"path": [
+								"findAllPatronesSocio",
+								"12345678A"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Salida",
+			"item": [
+				{
+					"name": "findAllSalidas",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8085/findAllSalidas",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8085",
+							"path": [
+								"findAllSalidas"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "saveSalida",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"fecha_hora\": \"2024-06-01T10:00:00Z\",\r\n    \"destino\": \"Malaga\",\r\n    \"barco\": {\r\n        \"matricula\": \"123ABC\",\r\n        \"socio\": {\r\n            \"socio_dni\": \"12345678A\"\r\n        }\r\n    },\r\n    \"patron\": {\r\n        \"id_patron\": 1,\r\n        \"socio\": {\r\n            \"socio_dni\": \"12345678A\"\r\n        }\r\n    }\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8085/saveSalida",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8085",
+							"path": [
+								"saveSalida"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "saveSalida (No funcional)",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"fecha_hora\": \"2024-05-01T10:00:00Z\",\r\n    \"destino\": \"España\",\r\n    \"barco\": {\r\n        \"matricula\": \"123ABC\",\r\n        \"nombre\": \"David\",\r\n        \"amarre\": \"A01\",\r\n        \"cuota\": 200.0,\r\n        \"socio\": {\r\n            \"socio_dni\": \"12345678A\",\r\n            \"nombre\": \"Juan\",\r\n            \"apellido\": \"Pérez\"\r\n        }\r\n    },\r\n    \"patron\":{\r\n        \"id_patron\": 4,\r\n        \"nombre\": \"Laura\",\r\n        \"apellido\": \"López\",\r\n        \"socio_dni\": \"78901234D\"\r\n    }\r\n    \r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8085/saveSalida",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8085",
+							"path": [
+								"saveSalida"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "updateSalida",
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n        \"fecha_hora\": \"2034-06-05T14:30:00Z\",\r\n        \"destino\": \"Tarragona\",\r\n        \"barco\": {\r\n            \"matricula\": \"543MNO\",\r\n            \"nombre\": \"InterMarino\",\r\n            \"amarre\": \"E20\",\r\n            \"cuota\": 190.0,\r\n            \"socio\": {\r\n                \"socio_dni\": \"23456789E\",\r\n                \"nombre\": \"Carlos\",\r\n                \"apellido\": \"Rodríguez\"\r\n            }\r\n        },\r\n        \"patron\": {\r\n            \"id_patron\": 5,\r\n            \"nombre\": \"Carlos\",\r\n            \"apellido\": \"Rodríguez\",\r\n            \"socio\": {\r\n                \"socio_dni\": \"23456789E\",\r\n                \"nombre\": \"Carlos\",\r\n                \"apellido\": \"Rodríguez\"\r\n            }\r\n        }\r\n    }",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8085/updateSalida/5",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8085",
+							"path": [
+								"updateSalida",
+								"5"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "updateSalida (No funcional)",
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n        \"fecha_hora\": \"2034-06-05T14:30:00Z\",\r\n        \"destino\": \"Tarragona\",\r\n        \"barco\": {\r\n            \"matricula\": \"543MNO\",\r\n            \"nombre\": \"InterMarino\",\r\n            \"amarre\": \"E20\",\r\n            \"cuota\": 190.0,\r\n            \"socio\": {\r\n                \"socio_dni\": \"23456789E\",\r\n                \"nombre\": \"Carlos\",\r\n                \"apellido\": \"Rodríguez\"\r\n            }\r\n        },\r\n        \"patron\": {\r\n            \"id_patron\": 5,\r\n            \"nombre\": \"Carlos\",\r\n            \"apellido\": \"Rodríguez\",\r\n            \"socio\": {\r\n                \"socio_dni\": \"23456789E\",\r\n                \"nombre\": \"Carlos\",\r\n                \"apellido\": \"Rodríguez\"\r\n            }\r\n        }\r\n    }",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8085/updateSalida/0",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8085",
+							"path": [
+								"updateSalida",
+								"0"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "deleteSalida",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8085/deleteSalida/3",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8085",
+							"path": [
+								"deleteSalida",
+								"3"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "deleteSalida (No funcional)",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8085/deleteSalida/0",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8085",
+							"path": [
+								"deleteSalida",
+								"0"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "findSalidaById",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8085/findSalidaById/1",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8085",
+							"path": [
+								"findSalidaById",
+								"1"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "findSalidaById(No funcional) Copy",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8085/findSalidaById/0",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8085",
+							"path": [
+								"findSalidaById",
+								"0"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		}
+	]
+}
